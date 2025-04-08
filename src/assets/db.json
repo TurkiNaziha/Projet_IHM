@@ -1,37 +1,37 @@
 {
-    "categories": [
-      {
-       "id": "1",
-        "name": "nazouhaa"
-       
-        
-      },
-      {
-        "id": "2",
-        "name": "oumaaa"
-      },
-      {
-        "id": "3",
-        "name": "yessmina"
-      }
-   
-    ],
-    "sous_categories":[
-      {
-        "id":"1",
-      "id_cat":"3",
-       "name": "yessmina semina"
-      
-      },
-      {
-        "id":"2",
-      "id_cat":"2",
-       "name": "ouma lamlouma"
-      },
-      {
-        "id":"3",
-      "id_cat":"1",
-       "name": "noza lmoza"
-      }
-    ]
-  }
+  "categories": [
+    {
+      "id": "3",
+      "name": "yessmina"
+    },
+    {
+      "id": "fiste ",
+      "name": "r"
+    },
+    {
+      "id": "test",
+      "name": "etst"
+    },
+    {
+      "id": "test",
+      "name": "test"
+    }
+  ],
+  "sous_categories": [
+    {
+      "id": "1",
+      "id_cat": "3",
+      "name": "yessmina semina"
+    },
+    {
+      "id": "2",
+      "id_cat": "2",
+      "name": "ouma lamlouma"
+    },
+    {
+      "id": "3",
+      "id_cat": "1",
+      "name": "noza lmoza"
+    }
+  ]
+}

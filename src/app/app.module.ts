@@ -12,6 +12,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import {MatTableModule} from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import {CategorieService} from "../Services/categorie.service";
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+
 
 
 @NgModule({
@@ -22,14 +32,23 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule,
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+
   ],
-  providers: [],
+  providers: [
+    CategorieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

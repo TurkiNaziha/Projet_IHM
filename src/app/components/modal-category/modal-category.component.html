@@ -1,0 +1,51 @@
+<div class="col-xl-8 order-xl-1">
+  <div class="card bg-secondary shadow">
+    <div class="card-header bg-white border-0">
+      <div class="row align-items-center">
+        <div class="col-8">
+          <h3 class="mb-0">Ajouter une categorie</h3>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label">ID *</label>
+                <input type="text" class="form-control form-control-alternative"
+                       formControlName="id" required>
+                <small *ngIf="form.get('id')?.invalid && form.get('id')?.touched"
+                       class="text-danger">
+                  ID obligatoire
+                </small>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="form-control-label">Nom *</label>
+                <input type="text" class="form-control form-control-alternative"
+                       formControlName="name" required>
+                <small *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+                       class="text-danger">
+                  Nom obligatoire
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline-danger" mat-stroked-button
+                  (click)="dialogRef.close()">
+            Annuler
+          </button>
+          <button type="submit" class="btn btn-outline-info" mat-raised-button color="primary"
+                  [disabled]="form.invalid">
+            Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
