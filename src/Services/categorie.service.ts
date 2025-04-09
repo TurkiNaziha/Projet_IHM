@@ -10,14 +10,14 @@ export class CategorieService {
 
   constructor(private http: HttpClient) { }
   GetAllCat(): Observable<Categorieng[]> {
-    return this.http.get<Categorieng[]>('http://localhost:3001/categories')
+    return this.http.get<Categorieng[]>('http://localhost:3002/categories')
   }
   AddCat(category: Categorieng): Observable<void> {
-    return this.http.post<void>('http://localhost:3001/categories', category)
+    return this.http.post<void>('http://localhost:3002/categories', category)
 
   }
   onDelete(id: String): Observable<void> {
-    return this.http.delete<void>(`http://localhost:3001/categories/${id}`)
+    return this.http.delete<void>(`http://localhost:3002/categories/${id}`)
   }
 
 

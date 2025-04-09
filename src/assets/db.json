@@ -1,12 +1,13 @@
 {
   "categories": [
     {
-      "id": "fiste ",
-      "name": "r"
+      "id": "1",
+      "name": "Meubles",
+      "taux": 0.1
     },
     {
-      "id": "test",
-      "name": "test"
+      "id": "121",
+      "name": "2"
     }
   ],
   "sous_categories": [
@@ -26,9 +27,9 @@
       "name": "noza lmoza"
     }
   ],
-    "annonces": [
+  "annonces": [
     {
-      "id": 1,
+      "id": "1",
       "titre": "Vente de Chaise Vintage",
       "statut": "en cours",
       "vandeurId": 1,
@@ -41,11 +42,11 @@
   ],
   "articles": [
     {
-      "id": 1,
+      "id": "1",
       "nom": "Chaise Vintage",
       "description": "Chaise en bois vintage, bon état",
       "categorieId": 1,
-      "prixInitial": 50.00,
+      "prixInitial": 50,
       "vendeurId": 1,
       "sousCategorie": 1,
       "marque": "Ancienne",
@@ -53,17 +54,9 @@
       "image": null
     }
   ],
-  "categories": [
+  "sousCategories": [
     {
-      "id": 1,
-      "name": "Meubles",
-      "taux": 0.1
-    }
-  ],
-  "sousCategories":
-  [
-    {
-      "id": 1,
+      "id": "1",
       "name": "Chaises",
       "categorieId": 1
     }
