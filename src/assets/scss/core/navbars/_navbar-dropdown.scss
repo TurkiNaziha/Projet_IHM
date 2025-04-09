@@ -4,7 +4,7 @@
     .navbar {
         .dropdown-menu {
             opacity: 0;
-            pointer-events: none;
+            // pointer-events: none;
             margin: 0;
         }
 
@@ -51,7 +51,7 @@
             .dropdown-menu {
                 opacity: 0;
                 display: block;
-                pointer-events: none;
+                // pointer-events: none;
                 transform: translate(0, 10px) perspective(200px) rotateX(-2deg);
                 transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
             }

@@ -1,37 +1,43 @@
 {
-    "categories": [
-      {
-       "id": "1",
-        "name": "nazouhaa"
-       
-        
-      },
-      {
-        "id": "2",
-        "name": "oumaaa"
-      },
-      {
-        "id": "3",
-        "name": "yessmina"
-      }
-   
-    ],
-    "sous_categories":[
-      {
-        "id":"1",
-      "id_cat":"3",
-       "name": "yessmina semina"
-      
-      },
-      {
-        "id":"2",
-      "id_cat":"2",
-       "name": "ouma lamlouma"
-      },
-      {
-        "id":"3",
-      "id_cat":"1",
-       "name": "noza lmoza"
-      }
-    ]
-  }
+  "annonces": [
+    {
+      "id": 1,
+      "titre": "Vente de Chaise Vintage",
+      "statut": "en cours",
+      "vandeurId": 1,
+      "dateDebut": "2025-03-31",
+      "dateFin": "2025-04-10",
+      "publie": true,
+      "acheteurId": null,
+      "articleId": 1
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "nom": "Chaise Vintage",
+      "description": "Chaise en bois vintage, bon état",
+      "categorieId": 1,
+      "prixInitial": 50.00,
+      "vendeurId": 1,
+      "sousCategorie": 1,
+      "marque": "Ancienne",
+      "etat": "bon",
+      "image": null
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Meubles",
+      "taux": 0.1
+    }
+  ],
+  "sousCategories": [
+    {
+      "id": 1,
+      "name": "Chaises",
+      "categorieId": 1
+    }
+  ]
+}

@@ -2965,11 +2965,11 @@ textarea.form-control
     box-shadow: 0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px rgba(0, 0, 0, .08), none;
 }
 
-a.btn.disabled,
+/* a.btn.disabled,
 fieldset:disabled a.btn
 {
     pointer-events: none;
-}
+} */
 
 .btn-primary
 {
@@ -3945,7 +3945,7 @@ fieldset:disabled a.btn
 .btn-link:disabled,
 .btn-link.disabled
 {
-    pointer-events: none;
+    /* pointer-events: none; */
 
     color: #8898aa;
 }
@@ -4460,7 +4460,7 @@ input[type='button'].btn-block
 
     clip: rect(0, 0, 0, 0);
 
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .input-group
@@ -4720,7 +4720,7 @@ input[type='button'].btn-block
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
-    pointer-events: none;
+    /* pointer-events: none; */
 
     background-color: #fff;
     box-shadow: none;
@@ -6116,7 +6116,7 @@ input[type='button'].btn-block
 .page-item.disabled .page-link
 {
     cursor: auto;
-    pointer-events: none;
+    /* pointer-events: none; */
 
     color: #8898aa;
     border-color: #dee2e6;
@@ -7054,7 +7054,7 @@ button.close
     width: auto;
     margin: .5rem;
 
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 .modal.fade .modal-dialog
 {
@@ -17983,7 +17983,7 @@ a.btn-icon-only
     margin-top: -420px;
     padding-top: 500px;
 
-    pointer-events: none;
+    /* pointer-events: none; */
 
     background: transparent;
 }
@@ -19965,7 +19965,7 @@ textarea[resize='horizontal']
     {
         margin: 0;
 
-        pointer-events: none;
+        /* pointer-events: none; */
 
         opacity: 0;
     }
@@ -20012,7 +20012,7 @@ textarea[resize='horizontal']
 
         transition: visibility .25s, opacity .25s, transform .25s;
         transform: translate(0, 10px) perspective(200px) rotateX(-2deg);
-        pointer-events: none;
+        /* pointer-events: none; */
 
         opacity: 0;
     }
@@ -20813,13 +20813,13 @@ textarea[resize='horizontal']
     height: 150px;
 
     transform: translateZ(0);
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 .separator svg
 {
     position: absolute;
 
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .separator-top
