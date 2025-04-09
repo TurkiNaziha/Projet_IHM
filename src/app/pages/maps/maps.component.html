@@ -30,14 +30,20 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-fab color="warn" (click)="delete(element.id)"
-                >
-          <mat-icon aria-hidden="false" aria-label="Delete">delete</mat-icon>
+<!--        <button mat-fab color="warn" (click)="delete(element.id)"-->
+<!--                >-->
+<!--          <mat-icon aria-hidden="false" aria-label="Delete">delete</mat-icon>-->
 
+<!--        </button>-->
+        <button class="btn btn-icon btn-danger btn-sm" (click)="delete(element.id)">
+          <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
         </button>
-        <!--        <button mat-fab color="primary" routerLink="/edit/{{element.id}}">-->
-        <!--          <mat-icon aria-hidden="false" aria-label="Delete">edit</mat-icon>-->
-        <!--        </button>-->
+<!--          <button mat-fab color="primary" routerLink="/edit/{{element.id}}">-->
+<!--            <mat-icon aria-hidden="false" aria-label="Delete">edit</mat-icon>-->
+<!--          </button>-->
+        <button class="btn btn-icon btn-primary btn-sm" [routerLink]="'/edit/' + element.id">
+          <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
+        </button>
       </td>
     </ng-container>
 
