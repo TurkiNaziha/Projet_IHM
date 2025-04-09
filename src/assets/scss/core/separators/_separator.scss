@@ -13,11 +13,11 @@
     height: 150px;
     transform: translateZ(0);
     overflow: hidden;
-    pointer-events: none;
+    // pointer-events: none;
 
     svg {
         position: absolute;
-        pointer-events: none;
+        // pointer-events: none;
     }
 }
 

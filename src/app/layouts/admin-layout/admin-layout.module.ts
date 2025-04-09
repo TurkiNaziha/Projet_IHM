@@ -13,8 +13,9 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatInputModule} from "@angular/material/input";
-import {MatTableModule} from "@angular/material/table";
+// import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from '@angular/material/table';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MatIconModule} from "@angular/material/icon";
     ClipboardModule,
     MatInputModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
   declarations: [
     DashboardComponent,

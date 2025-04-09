@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -23,6 +23,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IconsComponent } from './pages/icons/icons.component';
 
 @NgModule({
   imports: [
@@ -32,13 +34,16 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ComponentsModule,
     NgbModule,
     RouterModule,
+
     AppRoutingModule,
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    AppRoutingModule
+
   ],
   declarations: [
     AppComponent,
