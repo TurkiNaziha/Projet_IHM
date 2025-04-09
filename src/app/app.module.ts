@@ -15,7 +15,6 @@ import { ComponentsModule } from './components/components.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IconsComponent } from './pages/icons/icons.component';
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
