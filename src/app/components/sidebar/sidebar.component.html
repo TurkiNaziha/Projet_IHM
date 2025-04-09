@@ -1,3 +1,30 @@
+
+<style>
+  body {
+      background-color: #e6f0fa; /* Light blue background similar to the logo */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+  }
+  .logo-container {
+      display: flex;
+      align-items: center;
+  }
+  .logo-text {
+      font-family: Arial, sans-serif;
+      font-size: 29px;
+      font-weight: bold;
+      color: #0056b3; /* Blue color similar to the logo text */
+      margin-left: 10px; /* Space between icon and text */
+  }
+  .logo-icon {
+      color: #fb6340; 
+      font-size: 37px; /* Matching the text size */
+  }
+</style>
+
 <nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white" id="sidenav-main">
   <div class="container-fluid">
     <!-- Toggler -->
@@ -7,7 +34,11 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/dashboard']">
-      <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="...">
+      <!-- <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="..."> -->
+      <div class="logo-container">
+        <i class="fas fa-gavel logo-icon"></i> <!-- Gavel icon from Font Awesome -->
+        <span class="logo-text">EasyBid</span>
+    </div>
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
@@ -100,9 +131,9 @@
       <!-- Divider -->
       <hr class="my-3">
       <!-- Heading -->
-      <h6 class="navbar-heading text-muted">Documentation</h6>
+      <!-- <h6 class="navbar-heading text-muted">Documentation</h6> -->
       <!-- Navigation -->
-      <ul class="navbar-nav mb-md-3">
+      <!-- <ul class="navbar-nav mb-md-3">
         <li class="nav-item">
           <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard-angular/documentation/tutorial">
             <i class="ni ni-spaceship"></i> Getting started
@@ -118,7 +149,7 @@
             <i class="ni ni-ui-04"></i> Components
           </a>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </nav>
