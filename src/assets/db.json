@@ -2,14 +2,12 @@
   "categories": [
     {
       "id": "1",
-<<<<<<< HEAD
       "name": "Meubles",
       "taux": 0.1
     },
     {
       "id": "121",
-      "name": "2"
-=======
+
       "name": "Electronics"
     },
     {
@@ -23,7 +21,6 @@
     {
       "id": "4",
       "name": "Sports Equipment"
->>>>>>> 76739e54b71291f9c1a07c1858527dd71438755f
     }
   ],
   "sous_categories": [
