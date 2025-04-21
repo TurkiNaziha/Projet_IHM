@@ -7,7 +7,6 @@
     },
     {
       "id": "121",
-
       "name": "Electronics"
     },
     {
@@ -21,6 +20,10 @@
     {
       "id": "4",
       "name": "Sports Equipment"
+    },
+    {
+      "id": "5",
+      "name": "sport"
     }
   ],
   "sous_categories": [
@@ -70,8 +73,53 @@
   "sousCategories": [
     {
       "id": "1",
-      "name": "Chaises",
-      "categorieId": 1
+      "name": "Chaises1",
+      "categorieId": "1",
+      "category": {
+        "id": "1",
+        "name": "Meubles",
+        "subCategories": []
+      }
+    },
+    {
+      "id": "2",
+      "name": "smart phone",
+      "categorieId": "4",
+      "category": {
+        "id": "4",
+        "name": "Electronics",
+        "subCategories": []
+      }
+    },
+    {
+      "id": "3",
+      "name": "pc",
+      "categorieId": "4",
+      "category": {
+        "id": "4",
+        "name": "Electronics",
+        "subCategories": []
+      }
+    },
+    {
+      "id": "SC07",
+      "name": "tables",
+      "categorieId": "1"
+    },
+    {
+      "id": "1",
+      "name": "2",
+      "categorieId": "2"
+    },
+    {
+      "id": "88",
+      "name": "88",
+      "categorieId": "121"
+    },
+    {
+      "id": "t",
+      "name": "t",
+      "categorieId": "4"
     }
   ]
 }

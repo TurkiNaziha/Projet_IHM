@@ -1,0 +1,116 @@
+<div class="dialog-content">
+  <h3 class="dialog-title">Ajouter une sous catégorie</h3>
+  <form [formGroup]="form" (ngSubmit)="Submit()" class="category-form">
+    <mat-form-field appearance="fill">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" required>
+      <mat-error *ngIf="form.get('id')?.invalid && form.get('id')?.touched">
+        ID obligatoire
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+        Nom obligatoire
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="categorieId" required>
+        <mat-option *ngIf="isLoading" disabled>chargement ...</mat-option>
+        <mat-option *ngIf="!isLoading && categories.length === 0" disabled>No sub cat</mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.id }}- {{ category.name }}
+        </mat-option>
+      </mat-select>
+
+
+      <mat-error *ngIf="form.get('categorieId')?.invalid && form.get('categorieId')?.touched">
+        Catégorie obligatoire
+        <!--        <p>isLoading: {{ isLoading }}</p>-->
+
+      </mat-error>
+
+    </mat-form-field>
+    <!--    <pre>{{ categories | json }}</pre>-->
+
+    <div class="form-actions">
+      <button type="button" mat-stroked-button color="warn" (click)="onCancel()">Annuler</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Enregistrer</button>
+    </div>
+  </form>
+</div>
+
+
+<!--<div class="col-xl-8 order-xl-1">-->
+<!--  <div class="card bg-secondary shadow">-->
+<!--    <div class="card-header bg-white border-0">-->
+<!--      <div class="row align-items-center">-->
+<!--        <div class="col-8">-->
+<!--          <h3 class="mb-0">Ajouter une sous categorie</h3>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <form [formGroup]="form" (ngSubmit)="Submit()">-->
+<!--        <div class="pl-lg-4">-->
+<!--          <div class="row">-->
+<!--            <div class="col-lg-6">-->
+<!--              <div class="form-group">-->
+<!--                <label class="form-control-label">ID *</label>-->
+<!--                <input type="text" class="form-control form-control-alternative"-->
+<!--                       formControlName="id" required>-->
+<!--                <small *ngIf="form.get('id')?.invalid && form.get('id')?.touched"-->
+<!--                       class="text-danger">-->
+<!--                  ID obligatoire-->
+<!--                </small>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6">-->
+<!--              <div class="form-group">-->
+<!--                <label class="form-control-label">Nom *</label>-->
+<!--                <input type="text" class="form-control form-control-alternative"-->
+<!--                       formControlName="name" required>-->
+<!--                <small *ngIf="form.get('name')?.invalid && form.get('name')?.touched"-->
+<!--                       class="text-danger">-->
+<!--                  Nom obligatoire-->
+<!--                </small>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <form [formGroup]="stateForm">&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-form-field appearance="fill">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-label>States Group</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text"&ndash;&gt;-->
+<!--&lt;!&ndash;                   matInput&ndash;&gt;-->
+<!--&lt;!&ndash;                   formControlName="stateGroup"&ndash;&gt;-->
+<!--&lt;!&ndash;                   required&ndash;&gt;-->
+<!--&lt;!&ndash;                   [matAutocomplete]="autoGroup">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-autocomplete #autoGroup="matAutocomplete">&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">&ndash;&gt;-->
+<!--&lt;!&ndash;                <mat-option *ngFor="let name of group.names" [value]="name">&ndash;&gt;-->
+<!--&lt;!&ndash;                  {{name}}&ndash;&gt;-->
+<!--&lt;!&ndash;                </mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;              </mat-optgroup>&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-autocomplete>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;        </form>&ndash;&gt;-->
+
+<!--        <div class="form-actions">-->
+<!--&lt;!&ndash;          <button type="button" class="btn btn-outline-danger" mat-stroked-button&ndash;&gt;-->
+<!--&lt;!&ndash;                  (click)="dialogRef.close()">&ndash;&gt;-->
+<!--&lt;!&ndash;            Annuler&ndash;&gt;-->
+<!--&lt;!&ndash;          </button>&ndash;&gt;-->
+<!--&lt;!&ndash;          <button type="submit" class="btn btn-outline-info" mat-raised-button color="primary"&ndash;&gt;-->
+<!--&lt;!&ndash;                  [disabled]="form.invalid">&ndash;&gt;-->
+<!--&lt;!&ndash;            Enregistrer&ndash;&gt;-->
+<!--&lt;!&ndash;          </button>&ndash;&gt;-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

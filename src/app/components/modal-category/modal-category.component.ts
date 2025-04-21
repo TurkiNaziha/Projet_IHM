@@ -31,13 +31,19 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {CategorieService} from "../../../Services/categorie.service";
 import {Categorieng} from "../../../Models/Categorie";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: "modal-category",
   templateUrl: "./modal-category.component.html",
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   styleUrls: ["./modal-category.component.scss"]
 })

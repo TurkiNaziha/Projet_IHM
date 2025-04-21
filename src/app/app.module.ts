@@ -34,6 +34,7 @@ import { IconsComponent } from './pages/icons/icons.component';
     ComponentsModule,
     NgbModule,
     RouterModule,
+    BrowserAnimationsModule,
 
     AppRoutingModule,
     MatTableModule,
@@ -49,6 +50,7 @@ import { IconsComponent } from './pages/icons/icons.component';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+
 
   ],
   providers: [

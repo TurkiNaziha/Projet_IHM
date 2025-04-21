@@ -1,5 +1,6 @@
 export interface Categorieng {
-    id:String;
-    name:String;
-   
+  id: string;
+  name: string;
+  taux?: number;
+
 }
