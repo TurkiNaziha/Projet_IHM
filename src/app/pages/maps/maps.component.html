@@ -1,16 +1,11 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+<div class="header  pb-8 pt-5 pt-md-8">
   <div class="container-fluid">
     <div class="header-body">
       <div class="row align-items-center">
         <!--        <div class="col">-->
         <!--          <h1 class="text-white mb-0">Annonces</h1>-->
         <!--        </div>-->
-        <div class="example-button-row">
-          <button class="btn btn-info" (click)="addData()">
-            Add Category
-          </button>
 
-        </div>
 
       </div>
 
@@ -24,6 +19,12 @@
 <!--  </button>-->
 
 <!--</div>-->
+<div class="example-button-row">
+  <button class="btn btn-info" (click)="addData()">
+    Add Category
+  </button>
+
+</div>
 <div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
     <!-- Position Column -->

@@ -5,13 +5,25 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import {PublicLayoutComponent} from "./layouts/public-layout/public-layout.component";
 
 const routes: Routes =[
   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  }, {
+  },
+  {
+    path: '',
+    component: PublicLayoutComponent, // Utiliser PublicLayout pour la page d'accueil
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('src/app/pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+      }
+    ]
+  },
+  {
     path: '',
     component: AdminLayoutComponent,
     children: [

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SubCategory} from "../Models/SubCategory";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {Categorieng} from "../Models/Categorie";
 
 @Injectable({
@@ -9,6 +9,7 @@ import {Categorieng} from "../Models/Categorie";
 })
 export class SubCategoryService {
   private url = 'http://localhost:3002/sousCategories';
+  // private subCategoriesUrl: string;
 
   constructor(private http: HttpClient) {
   }
@@ -30,6 +31,12 @@ export class SubCategoryService {
   //     category: subCategory.category
   //   });
   // }
+  getSubCategoriesByCategoryId(categoryId: string): Observable<{ id: string; name: string; categorieId: string }[]> {
+    // Utilise uniquement categorieId comme paramètre de filtrage
+    return this.http.get<{ id: string; name: string; categorieId: string }[]>(
+      `${this.url}/subcategories?categorieId=${categoryId}`
+    );
+  }
   deleteSC(id: string): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`);
   }

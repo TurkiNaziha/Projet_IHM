@@ -1,58 +1,62 @@
-.header {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .header-body {
-    display: flex;
-    align-items: center;
-  }
-  
-  .card {
-    transition: transform 0.2s ease-in-out;
-    padding-top: 130px;;
-  
-    &:hover {
-      transform: translateY(-5px);
-    }
-  
-    .card-img-top {
-      background-color: #f8f9fa;
-      padding: 5px;
-    }
-  
-    .card-body {
-      padding: 1rem;
-    }
-  
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 300;
-    }
-  
-    .card-text {
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-  
-    .card-footer {
-      background-color: transparent;
-      border-top: none;
-      padding: 0.75rem 1rem;
-    }
-  }
-  
-  .btn-primary {
-    background-color: #5e72e4;
-    border-color: #5e72e4;
-  
-    &:hover {
-      background-color: #324cdd;
-      border-color: #324cdd;
-    }
-    .modal-body .form-control {
-      pointer-events: auto !important;
-      opacity: 1 !important;
-      background-color: #fff !important;
-    }
-  }
+.container {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #32325d;
+}
+
+.ni-bullhorn {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.demo-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  background-color: #f5f5f5;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.mat-row:hover {
+  background-color: #f0f0f0;
+}
+
+.btn-sm {
+  margin-right: 5px;
+}
+
+.btn-icon {
+  padding: 5px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #5e72e4;
+}

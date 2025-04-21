@@ -1,163 +1,130 @@
+<!--ouma version-->
 
+<div class="container-fluid mt-7" style="border: none; box-shadow: none;">
+  <div class="row">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <!-- Carousel Container -->
+      <div class="carousel-container position-relative" style="border: none; box-shadow: none;">
+        <!-- Carousel Slides -->
+        <div class="carousel-slides" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
+          <!-- Slide 1: Welcome to EasyBid -->
+          <div class="carousel-slide">
+            <div class="card" style="height: 300px; border-radius: 15px; position: relative; overflow: hidden; border: none;">
+              <img src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg" alt="Decorative items" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; object-position: center; position: absolute; top: 0; left: 0;">
+              <div class="card-header bg-transparent" style="position: relative; z-index: 1;">
+                <div class="row align-items-center">
+                  <div class="col-12">
+                    <h1 class="text-white mb-2">Welcome to EasyBid!</h1>
+                    <h6 class="text-light ls-1 mb-3">
+                      EasyBid makes bidding fast, secure, and exciting. </h6>
+                    <h6 class="text-light ls-1 mb-3">Join our community today and start winning.</h6>
+                    <br><br><br>
+                    <button class="btn mt-5" style="background-color: #7A90A4; color: white;" routerLink="/icons">Let's Begin!</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body" style="position: relative; z-index: 1;"></div>
+            </div>
+          </div>
 
-<!-- <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+          <!-- Slide 2: Sell Your Decorative Items -->
+          <div class="carousel-slide">
+            <div class="card" style="height: 300px; border-radius: 15px; position: relative; overflow: hidden; border: none;">
+              <img src="https://images.pexels.com/photos/572056/pexels-photo-572056.jpeg" alt="Decorative items" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; object-position: center; position: absolute; top: 0; left: 0;">
+              <div class="card-header bg-transparent" style="position: relative; z-index: 1;">
+                <div class="row align-items-center">
+                  <div class="col-12">
+                    <h1 class="text-white mb-2">Welcome to EasyBid!</h1>
+                    <h6 class="text-light ls-1 mb-3">
+                      Explore new passions with ease—your tastes  </h6>
+                    <h6 class="text-light ls-1 mb-3">deserve to evolve on our bidding platform!</h6>
+                    <br><br><br>
+                    <button class="btn mt-5" style="background-color: #7A90A4; color: white;" routerLink="/icons">Let's Begin!</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body" style="position: relative; z-index: 1;"></div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Grab the Best Deals -->
+          <div class="carousel-slide">
+            <div class="card" style="height: 300px; border-radius: 15px; position: relative; overflow: hidden; border: none;">
+              <img src="https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg" alt="Decorative items" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; object-position: center; position: absolute; top: 0; left: 0;">
+              <div class="card-header bg-transparent" style="position: relative; z-index: 1;">
+                <div class="row align-items-center">
+                  <div class="col-12">
+                    <h1 class="text-white mb-2">Grab the best deals!</h1>
+                    <h6 class="text-light ls-1 mb-3">
+                      Now is the perfect time to save on your purchases.
+                    </h6>
+                    <br><br><br><br>
+                    <button class="btn mt-5" style="background-color: #7A90A4; color: white;" routerLink="/icons">Let's Begin!</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body" style="position: relative; z-index: 1;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="carousel-arrow left-arrow" (click)="prevSlide()">❮</button>
+        <button class="carousel-arrow right-arrow" (click)="nextSlide()">❯</button>
+
+        <!-- Dots Indicator -->
+        <div class="carousel-dots">
+          <span *ngFor="let slide of slides; let i = index" class="dot" [class.active]="i === currentSlide" (click)="goToSlide(i)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<!-- Updated Categories Section with "Explore Now" as a Button -->
+<div class="header pb-3 pt-3 pt-md-3">
   <div class="container-fluid">
     <div class="header-body">
-       Card stats
       <div class="row">
-
-
-        <div class="container" >
-          <div class="row" style="display: flex; flex-wrap: nowrap;">
-             Electronics Category
-            <div class="col-xl-3 col-lg-6 mb-4 mx-2">
-              <a href="/category/electronics" aria-label="Electronics category with 50 active bids">
-                <div class="card card-stats mb-4 mb-xl-0">
-                  <div class="card-body text-center">
-                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743425054/pexels-garrettmorrow-682933_mfsnri.jpg'); background-size: cover; background-position: center; border: 1px solid blue;"></div>
-                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Electronics</h5>
-                    <p class="text-muted text-sm mt-1">50 Active Bids</p>
-                    <p class="text-primary text-sm mt-1">Explore Now</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-             Fashion Category
-            <div class="col-xl-3 col-lg-6 mb-4 mx-2">
-              <a href="/category/fashion" aria-label="Fashion category with 30 active bids">
-                <div class="card card-stats mb-4 mb-xl-0">
-                  <div class="card-body text-center">
-                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743424817/pexels-shkrabaanthony-6207736_dllmuh.jpg'); background-size: cover; background-position: center; border: 1px solid pink;"></div>
-                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Fashion</h5>
-                    <p class="text-muted text-sm mt-1">30 Active Bids</p>
-                    <p class="text-primary text-sm mt-1">Explore Now</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-6 mb-4 mx-2">
-              <a href="/category/collectibles" aria-label="Collectibles category with 20 active bids">
-                <div class="card card-stats mb-4 mb-xl-0">
-                  <div class="card-body text-center">
-                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743424418/freepik__the-style-is-candid-image-photography-with-natural__30301_u60ihw.jpg'); background-size: cover; background-position: center; border: 1px solid gold;"></div>
-                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Collectibles</h5>
-                    <p class="text-muted text-sm mt-1">20 Active Bids</p>
-                    <p class="text-primary text-sm mt-1">Explore Now</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-6 mb-4 mx-2">
-              <a href="/category/sports-equipment" aria-label="Sports Equipment category with 40 active bids">
-                <div class="card card-stats mb-4 mb-xl-0">
-                  <div class="card-body text-center">
-                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743423974/freepik__the-style-is-candid-image-photography-with-natural__30300_ofirry.jpg'); background-size: cover; background-position: center; border: 1px solid green;"></div>
-                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Sports Equipment</h5>
-                    <p class="text-muted text-sm mt-1">40 Active Bids</p>
-                    <p class="text-primary text-sm mt-1">Explore Now</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div> -->
-<div class="container-fluid mt-7 " >
-  <div class="row">
-    <div class="col-xl-12 mb-5 mb-xl-0">
-      <div class="card shadow" style="min-height: 150px; background-color: #ca5126;"> <!-- Replaced bg-gradient-default with inline style -->        <div class="card-header bg-transparent">
-          <div class="row align-items-center">
-            <div class="col-6"> <!-- Adjusted to col-8 to leave space for the image -->
-              <h1 class="text-white mb-2">Welcome to EasyBid! </h1>
-              <h6 class="text-uppercase text-light ls-1 mb-3">your go-to platform for seamless online auctions! Discover a wide range of products, place your bids, and win your favorites with just a few clicks. Whether you're hunting for rare collectibles or everyday essentials, EasyBid makes bidding fast, secure, and exciting. Join our community today and start winning.</h6>
-              <button class="btn  mt-3" style=" background-color:#dcc5ba" routerLink="/icons">Let's Begin!</button> <!-- Added button -->
-            </div>
-            <div class="col-xl-6 d-flex justify-content-end align-items-center"> <!-- Image on the right -->
-              <img src="https://res.cloudinary.com/dyzh0aong/image/upload/v1743440817/pexels-olly-853151-removebg-preview_uaobz1.png" alt="Decorative items" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
-            </div>
-
-          </div>
-        </div>
-        <div class="card-body">
-          <!-- Optional: Add content here if needed -->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="header  pb-8 pt-5 pt-md-8"> <!-- Changed to a softer gradient -->
-  <div class="container-fluid">
-    <div class="header-body">
-
-
-      <!-- Card stats -->
-      <div class="row" >
+        <h2 class="mb-0">Categories</h2><br>
         <div class="container">
-          <div class="row" style="display: flex; flex-wrap: nowrap;"> <!-- Removed flex-wrap: nowrap to allow wrapping -->
+          <div class="row" style="display: flex; flex-wrap: nowrap;">
             <!-- Electronics Category -->
-            <div class="col-xl-3 col-lg-6 mb-4 mx-2">
+            <div class="col-xl-3 col-lg-6 mb-4 mx-2 text-center">
               <a routerLink="/category/electronics" aria-label="Electronics category with 50 active bids">
-                <div class="card card-stats mb-4 mb-xl-0">
-                  <div class="card-body text-center">
-                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743425054/pexels-garrettmorrow-682933_mfsnri.jpg'); background-size: cover; background-position: center; border: 1px solid blue;"></div>
-                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Electronics</h5>
-                    <p class="text-muted text-sm mt-1">{{ 50 }} Active Bids</p> <!-- Added Angular binding -->
-                    <p class="text-primary text-sm mt-1">Explore Now</p>
-                  </div>
-                </div>
+                <div class="rounded-circle mx-auto" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743425054/pexels-garrettmorrow-682933_mfsnri.jpg'); background-size: cover; background-position: center; border: 1px solid blue;"></div>
+                <h5 class="mt-3 mb-0" style="color: black;">Electronics</h5>
+                <p class="text-muted text-sm mt-1">{{ 50 }} Active Bids</p>
+                <button class="btn mt-2" style="background-color: #5CAFE7; color: white; border-radius: 20px;">Explore Now</button>
               </a>
             </div>
-
             <!-- Fashion Category -->
-            <div class="col-xl-3 col-lg-6 mb-4 mx-2">
+            <div class="col-xl-3 col-lg-6 mb-4 mx-2 text-center">
               <a routerLink="/category/fashion" aria-label="Fashion category with 30 active bids">
-                <div class="card card-stats mb-4 mb-xl-0">
-                  <div class="card-body text-center">
-                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg'); background-size: cover; background-position: center; border: 1px solid pink;"></div>
-                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Fashion</h5>
-                    <p class="text-muted text-sm mt-1">{{ 30 }} Active Bids</p>
-                    <p class="text-primary text-sm mt-1">Explore Now</p>
-                  </div>
-                </div>
+                <div class="rounded-circle mx-auto" style="width: 100px; height: 100px; background-image: url('https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg'); background-size: cover; background-position: center; border: 1px solid pink;"></div>
+                <h5 class="mt-3 mb-0" style="color: black;">Fashion</h5>
+                <p class="text-muted text-sm mt-1">{{ 30 }} Active Bids</p>
+                <button class="btn mt-2" style="background-color: #5CAFE7; color: white; border-radius: 20px;">Explore Now</button>
               </a>
             </div>
-
             <!-- Collectibles Category -->
-            <div class="col-xl-3 col-lg-6 mb-4 mx-2">
+            <div class="col-xl-3 col-lg-6 mb-4 mx-2 text-center">
               <a routerLink="/category/collectibles" aria-label="Collectibles category with 20 active bids">
-                <div class="card card-stats mb-4 mb-xl-0">
-                  <div class="card-body text-center">
-                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743424418/freepik__the-style-is-candid-image-photography-with-natural__30301_u60ihw.jpg'); background-size: cover; background-position: center; border: 1px solid gold;"></div>
-                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Collectibles</h5>
-                    <p class="text-muted text-sm mt-1">{{ 20 }} Active Bids</p>
-                    <p class="text-primary text-sm mt-1">Explore Now</p>
-                  </div>
-                </div>
+                <div class="rounded-circle mx-auto" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743424418/freepik__the-style-is-candid-image-photography-with-natural__30301_u60ihw.jpg'); background-size: cover; background-position: center; border: 1px solid gold;"></div>
+                <h5 class="mt-3 mb-0" style="color: black;">Collectibles</h5>
+                <p class="text-muted text-sm mt-1">{{ 20 }} Active Bids</p>
+                <button class="btn mt-2" style="background-color: #5CAFE7; color: white; border-radius: 20px;">Explore Now</button>
               </a>
             </div>
-
             <!-- Sports Equipment Category -->
-            <div class="col-xl-3 col-lg-6 mb-4 mx-2">
+            <div class="col-xl-3 col-lg-6 mb-4 mx-2 text-center">
               <a routerLink="/category/sports-equipment" aria-label="Sports Equipment category with 40 active bids">
-                <div class="card card-stats mb-4 mb-xl-0">
-                  <div class="card-body text-center">
-                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743423974/freepik__the-style-is-candid-image-photography-with-natural__30300_ofirry.jpg'); background-size: cover; background-position: center; border: 1px solid green;"></div>
-                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Sports Equipment</h5>
-                    <p class="text-muted text-sm mt-1">{{ 40 }} Active Bids</p>
-                    <p class="text-primary text-sm mt-1">Explore Now</p>
-                  </div>
-                </div>
+                <div class="rounded-circle mx-auto" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743423974/freepik__the-style-is-candid-image-photography-with-natural__30300_ofirry.jpg'); background-size: cover; background-position: center; border: 1px solid green;"></div>
+                <h5 class="mt-3 mb-0" style="color: black;">Sports Equipment</h5>
+                <p class="text-muted text-sm mt-1">{{ 40 }} Active Bids</p>
+                <button class="btn mt-2" style="background-color: #5CAFE7; color: white; border-radius: 20px;">Explore Now</button>
               </a>
             </div>
           </div>
@@ -167,274 +134,404 @@
   </div>
 </div>
 
-
-<div class="container-fluid mt--7" >
+<!<!-- Première section "Sell Your Decorative Items" avec design fin et élégant -->
+<div class="container-fluid mt-3">
   <div class="row">
     <div class="col-xl-12 mb-5 mb-xl-0">
-      <div class="card bg-gradient-default shadow" style="min-height: 150px;">
-        <div class="card-header bg-transparent">
+      <div class="card elegant-card" style="border-radius: 10px; background-color: #E8D5CC; overflow: hidden;">
+        <div class="card-header bg-transparent" style="padding: 1.5rem;">
           <div class="row align-items-center">
-            <div class="col-6"> <!-- Adjusted to col-8 to leave space for the image -->
-              <h1 class="text-white mb-2">Sell Your Decorative Items</h1>
-              <h6 class="text-uppercase text-light ls-1 mb-3">Explore new passions with ease—your tastes deserve to evolve on our bidding platform!</h6>
-              <button class="btn btn-primary mt-3" routerLink="/icons"  >Let's Begin!</button> <!-- Added button -->
+            <div class="col-6 d-flex flex-column justify-content-center">
+              <h1 class="elegant-title mb-3">Auction Your Treasures</h1>
+              <h6 class="elegant-subtitle mb-4">
+                Unleash the value of your unique decorative items—join our exclusive auction platform today!
+              </h6>
+              <button class="btn elegant-btn mt-2" routerLink="/icons">Start Bidding!</button>
             </div>
-            <div class="col-xl-6 d-flex justify-content-end align-items-center"> <!-- Image on the right -->
-              <img src="https://res.cloudinary.com/dyzh0aong/image/upload/v1743438999/pexels-matoga-20814488-removebg-preview_ekcqix.png" alt="Decorative items" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
-            </div>
-
-          </div>
-        </div>
-        <div class="card-body">
-          <!-- Optional: Add content here if needed -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- <div class="row mt-5">
-    <div class="col-xl-8 mb-5 mb-xl-0">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
-            <div class="col">
-              <h3 class="mb-0">Page visits</h3>
-            </div>
-            <div class="col text-right">
-              <a href="#!" class="btn btn-sm btn-primary">See all</a>
+            <div class="col-6 d-flex justify-content-end align-items-center">
+              <img src="https://images.pexels.com/photos/139764/pexels-photo-139764.jpeg" alt="Luxury diamond necklace" class="elegant-img rounded" style="max-height: 200px; object-fit: contain;">
             </div>
           </div>
         </div>
-        <div class="table-responsive">
-           Projects table
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Page name</th>
-                <th scope="col">Visitors</th>
-                <th scope="col">Unique users</th>
-                <th scope="col">Bounce rate</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">
-                  /argon/
-                </th>
-                <td>
-                  4,569
-                </td>
-                <td>
-                  340
-                </td>
-                <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  /argon/index.html
-                </th>
-                <td>
-                  3,985
-                </td>
-                <td>
-                  319
-                </td>
-                <td>
-                  <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  /argon/charts.html
-                </th>
-                <td>
-                  3,513
-                </td>
-                <td>
-                  294
-                </td>
-                <td>
-                  <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  /argon/tables.html
-                </th>
-                <td>
-                  2,050
-                </td>
-                <td>
-                  147
-                </td>
-                <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  /argon/profile.html
-                </th>
-                <td>
-                  1,795
-                </td>
-                <td>
-                  190
-                </td>
-                <td>
-                  <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-4">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
-            <div class="col">
-              <h3 class="mb-0">Social traffic</h3>
-            </div>
-            <div class="col text-right">
-              <a href="#!" class="btn btn-sm btn-primary">See all</a>
-            </div>
-          </div>
-        </div>
-        <div class="table-responsive">
-           Projects table
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Referral</th>
-                <th scope="col">Visitors</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">
-                  Facebook
-                </th>
-                <td>
-                  1,480
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">60%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Facebook
-                </th>
-                <td>
-                  5,480
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">70%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Google
-                </th>
-                <td>
-                  4,807
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">80%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Instagram
-                </th>
-                <td>
-                  3,678
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">75%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  twitter
-                </th>
-                <td>
-                  2,645
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">30%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-</div>
-
-
-
-<div class="container-fluid mt-5 " >
-  <div class="row">
-    <div class="col-xl-12 mb-5 mb-xl-0">
-      <div class="card shadow" style="min-height: 150px; background-color: #ca5126;"> <!-- Replaced bg-gradient-default with inline style -->        <div class="card-header bg-transparent">
-          <div class="row align-items-center">
-            <div class="col-6"> <!-- Adjusted to col-8 to leave space for the image -->
-              <h1 class="text-white mb-2">Grab the best deals! </h1>
-              <h6 class="text-uppercase text-light ls-1 mb-3">Now is the perfect time to save on your purchases.</h6>
-              <button class="btn  mt-3" style=" background-color:#dcc5ba" routerLink="/icons">Let's Begin!</button> <!-- Added button -->
-            </div>
-            <div class="col-xl-6 d-flex justify-content-end align-items-center"> <!-- Image on the right -->
-              <img src="https://res.cloudinary.com/dyzh0aong/image/upload/v1743440817/pexels-olly-853151-removebg-preview_uaobz1.png" alt="Decorative items" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
-            </div>
-
-          </div>
-        </div>
-        <div class="card-body">
-          <!-- Optional: Add content here if needed -->
-        </div>
+        <div class="card-body"></div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Deuxième section "Sell Your Decorative Items" avec design identique -->
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card elegant-card" style="border-radius: 10px; background-color: #f5efe6; overflow: hidden;">
+        <div class="card-header bg-transparent" style="padding: 1.5rem;">
+          <div class="row align-items-center">
+            <div class="col-6 d-flex flex-column justify-content-center">
+              <h1 class="elegant-title mb-3">Showcase Your Collectibles</h1>
+              <h6 class="elegant-subtitle mb-4">
+                Turn your prized possessions into winning bids—experience the thrill of our auction marketplace!
+              </h6>
+              <button class="btn elegant-btn mt-2" routerLink="/icons">Start Bidding!</button>
+            </div>
+            <div class="col-6 d-flex justify-content-end align-items-center">
+              <img src="https://images.pexels.com/photos/164837/pexels-photo-164837.jpeg" alt="Antique porcelain figurine" class="elegant-img rounded" style="max-height: 200px; object-fit: contain;">
+            </div>
+          </div>
+        </div>
+        <div class="card-body"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section pour les articles (Phones & Bags) -->
+<div class="container-fluid mt-5">
+  <div class="row align-items-center mb-3">
+    <div class="col">
+      <h2 class="mb-0">Phones & Bags</h2>
+      <p class="text-muted">Recommended for you</p>
+    </div>
+    <div class="col-auto">
+      <a href="#" class="text-muted">See all</a>
+    </div>
+  </div>
+  <div class="row items-container">
+    <button class="item-arrow left-arrow" (click)="scrollItems('left')">❮</button>
+    <div class="items-list">
+      <div class="row flex-nowrap">
+        <div class="col-md-3 col-sm-6 mb-4" *ngFor="let item of items">
+          <div class="card h-100 shadow-sm">
+            <img [src]="item.image" class="card-img-top" alt="{{ item.title }}" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.title }}</h5>
+              <p class="card-text text-muted">{{ item.description }}</p>
+              <p class="card-text font-weight-bold">{{ item.price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="item-arrow right-arrow" (click)="scrollItems('right')">❯</button>
+  </div>
+</div>
+
+<style>
+  .carousel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .left-arrow {
+    left: 10px;
+  }
+
+  .right-arrow {
+    right: 10px;
+  }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background-color: white;
+  }
+
+  /* Ajout du style pour rendre les h6 en bleu */
+  h6 {
+    color: rgb(33, 33, 114) !important;
+  }
+
+  /* Styles pour la section d'articles */
+  .items-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .items-list {
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .items-list::-webkit-scrollbar {
+    display: none; /* Masquer la barre de défilement */
+  }
+
+  .item-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .item-arrow.left-arrow {
+    left: 10px;
+  }
+
+  .item-arrow.right-arrow {
+    right: 10px;
+  }
+
+  .card {
+    transition: transform 0.2s;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  /* Styles pour la section "Sell Your Decorative Items" (design fin et élégant) */
+  .elegant-card {
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+  }
+
+  .elegant-card:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .elegant-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    color: #333;
+  }
+
+  .elegant-subtitle {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+    text-transform: none;
+  }
+
+  .elegant-btn {
+    background: transparent;
+    border: 2px solid #7c7e80;
+    color: #BDA18A;
+    border-radius: 20px;
+    padding: 8px 25px;
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .elegant-btn:hover {
+    background: #b3b5b7;
+    color: white;
+    border-color: #aac8dc;
+  }
+
+  .elegant-img {
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .elegant-img:hover {
+    transform: scale(1.03);
+  }
+</style>
+
+
+
+
+<!--end--------------------------------------------->
+<!---->
+<!--<div class="container-fluid mt-7 " >-->
+<!--  <div class="row">-->
+<!--    <div class="col-xl-12 mb-5 mb-xl-0">-->
+<!--      <div class="card shadow" style="min-height: 150px; background-color: #ca5126;"> &lt;!&ndash; Replaced bg-gradient-default with inline style &ndash;&gt;        <div class="card-header bg-transparent">-->
+<!--          <div class="row align-items-center">-->
+<!--            <div class="col-6"> &lt;!&ndash; Adjusted to col-8 to leave space for the image &ndash;&gt;-->
+<!--              <h1 class="text-white mb-2">Welcome to EasyBid! </h1>-->
+<!--              <h6 class="text-uppercase text-light ls-1 mb-3">your go-to platform for seamless online auctions! Discover a wide range of products, place your bids, and win your favorites with just a few clicks. Whether you're hunting for rare collectibles or everyday essentials, EasyBid makes bidding fast, secure, and exciting. Join our community today and start winning.</h6>-->
+<!--              <button class="btn  mt-3" style=" background-color:#dcc5ba" routerLink="/icons">Let's Begin!</button> &lt;!&ndash; Added button &ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="col-xl-6 d-flex justify-content-end align-items-center"> &lt;!&ndash; Image on the right &ndash;&gt;-->
+<!--              <img src="https://res.cloudinary.com/dyzh0aong/image/upload/v1743440817/pexels-olly-853151-removebg-preview_uaobz1.png" alt="Decorative items" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          &lt;!&ndash; Optional: Add content here if needed &ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div class="header  pb-8 pt-5 pt-md-8"> &lt;!&ndash; Changed to a softer gradient &ndash;&gt;-->
+<!--  <div class="container-fluid">-->
+<!--    <div class="header-body">-->
+
+
+<!--      &lt;!&ndash; Card stats &ndash;&gt;-->
+<!--      <div class="row" >-->
+<!--        <div class="container">-->
+<!--          <div class="row" style="display: flex; flex-wrap: nowrap;"> &lt;!&ndash; Removed flex-wrap: nowrap to allow wrapping &ndash;&gt;-->
+<!--            &lt;!&ndash; Electronics Category &ndash;&gt;-->
+<!--            <div class="col-xl-3 col-lg-6 mb-4 mx-2">-->
+<!--              <a routerLink="/category/electronics" aria-label="Electronics category with 50 active bids">-->
+<!--                <div class="card card-stats mb-4 mb-xl-0">-->
+<!--                  <div class="card-body text-center">-->
+<!--                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743425054/pexels-garrettmorrow-682933_mfsnri.jpg'); background-size: cover; background-position: center; border: 1px solid blue;"></div>-->
+<!--                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Electronics</h5>-->
+<!--                    <p class="text-muted text-sm mt-1">{{ 50 }} Active Bids</p> &lt;!&ndash; Added Angular binding &ndash;&gt;-->
+<!--                    <p class="text-primary text-sm mt-1">Explore Now</p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Fashion Category &ndash;&gt;-->
+<!--            <div class="col-xl-3 col-lg-6 mb-4 mx-2">-->
+<!--              <a routerLink="/category/fashion" aria-label="Fashion category with 30 active bids">-->
+<!--                <div class="card card-stats mb-4 mb-xl-0">-->
+<!--                  <div class="card-body text-center">-->
+<!--                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg'); background-size: cover; background-position: center; border: 1px solid pink;"></div>-->
+<!--                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Fashion</h5>-->
+<!--                    <p class="text-muted text-sm mt-1">{{ 30 }} Active Bids</p>-->
+<!--                    <p class="text-primary text-sm mt-1">Explore Now</p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Collectibles Category &ndash;&gt;-->
+<!--            <div class="col-xl-3 col-lg-6 mb-4 mx-2">-->
+<!--              <a routerLink="/category/collectibles" aria-label="Collectibles category with 20 active bids">-->
+<!--                <div class="card card-stats mb-4 mb-xl-0">-->
+<!--                  <div class="card-body text-center">-->
+<!--                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743424418/freepik__the-style-is-candid-image-photography-with-natural__30301_u60ihw.jpg'); background-size: cover; background-position: center; border: 1px solid gold;"></div>-->
+<!--                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Collectibles</h5>-->
+<!--                    <p class="text-muted text-sm mt-1">{{ 20 }} Active Bids</p>-->
+<!--                    <p class="text-primary text-sm mt-1">Explore Now</p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Sports Equipment Category &ndash;&gt;-->
+<!--            <div class="col-xl-3 col-lg-6 mb-4 mx-2">-->
+<!--              <a routerLink="/category/sports-equipment" aria-label="Sports Equipment category with 40 active bids">-->
+<!--                <div class="card card-stats mb-4 mb-xl-0">-->
+<!--                  <div class="card-body text-center">-->
+<!--                    <div class="rounded-circle" style="width: 100px; height: 100px; background-image: url('https://res.cloudinary.com/dyzh0aong/image/upload/v1743423974/freepik__the-style-is-candid-image-photography-with-natural__30300_ofirry.jpg'); background-size: cover; background-position: center; border: 1px solid green;"></div>-->
+<!--                    <h5 class="card-title text-uppercase mt-3 mb-0" style="color: black;">Sports Equipment</h5>-->
+<!--                    <p class="text-muted text-sm mt-1">{{ 40 }} Active Bids</p>-->
+<!--                    <p class="text-primary text-sm mt-1">Explore Now</p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div class="container-fluid mt&#45;&#45;7" >-->
+<!--  <div class="row">-->
+<!--    <div class="col-xl-12 mb-5 mb-xl-0">-->
+<!--      <div class="card bg-gradient-default shadow" style="min-height: 150px;">-->
+<!--        <div class="card-header bg-transparent">-->
+<!--          <div class="row align-items-center">-->
+<!--            <div class="col-6"> &lt;!&ndash; Adjusted to col-8 to leave space for the image &ndash;&gt;-->
+<!--              <h1 class="text-white mb-2">Sell Your Decorative Items</h1>-->
+<!--              <h6 class="text-uppercase text-light ls-1 mb-3">Explore new passions with ease—your tastes deserve to evolve on our bidding platform!</h6>-->
+<!--              <button class="btn btn-primary mt-3" routerLink="/icons"  >Let's Begin!</button> &lt;!&ndash; Added button &ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="col-xl-6 d-flex justify-content-end align-items-center"> &lt;!&ndash; Image on the right &ndash;&gt;-->
+<!--              <img src="https://res.cloudinary.com/dyzh0aong/image/upload/v1743438999/pexels-matoga-20814488-removebg-preview_ekcqix.png" alt="Decorative items" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          &lt;!&ndash; Optional: Add content here if needed &ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!-- -->
+
+<!--</div>-->
+
+
+
+<!--<div class="container-fluid mt-5 " >-->
+<!--  <div class="row">-->
+<!--    <div class="col-xl-12 mb-5 mb-xl-0">-->
+<!--      <div class="card shadow" style="min-height: 150px; background-color: #ca5126;"> &lt;!&ndash; Replaced bg-gradient-default with inline style &ndash;&gt;        <div class="card-header bg-transparent">-->
+<!--          <div class="row align-items-center">-->
+<!--            <div class="col-6"> &lt;!&ndash; Adjusted to col-8 to leave space for the image &ndash;&gt;-->
+<!--              <h1 class="text-white mb-2">Grab the best deals! </h1>-->
+<!--              <h6 class="text-uppercase text-light ls-1 mb-3">Now is the perfect time to save on your purchases.</h6>-->
+<!--              <button class="btn  mt-3" style=" background-color:#dcc5ba" routerLink="/icons">Let's Begin!</button> &lt;!&ndash; Added button &ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="col-xl-6 d-flex justify-content-end align-items-center"> &lt;!&ndash; Image on the right &ndash;&gt;-->
+<!--              <img src="https://res.cloudinary.com/dyzh0aong/image/upload/v1743440817/pexels-olly-853151-removebg-preview_uaobz1.png" alt="Decorative items" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          &lt;!&ndash; Optional: Add content here if needed &ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+

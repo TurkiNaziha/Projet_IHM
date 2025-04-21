@@ -1,196 +1,161 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AnnonceService } from 'src/Services/annonces.service';
+import { Annonce } from 'src/Models/Annonce';
+import { Vendeur } from 'src/Models/Vendeur';
+import { Article } from 'src/Models/Article';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalAnnonceComponent } from 'src/app/components/modal-annonce/modal-annonce.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
+import { catchError, forkJoin, of } from 'rxjs';
+import { ViewAnnonceDialogComponent } from '../view/view-annonce-dialog';
+import { DeleteConfirmationDialogComponent } from '../delete/delete-confirmation-dialog';
 
 @Component({
-  selector: 'app-icons',
+  selector: 'app-annonce-list',
   templateUrl: './icons.component.html',
-  styleUrls: ['./icons.component.scss']
+  styleUrls: ['./icons.component.scss'],
+
+  // imports: [
+  //   MatButtonModule,
+  //   MatTableModule,
+  //   CommonModule
+  // ]
 })
-export class IconsComponent implements OnInit {
-  public copy: string;
-  annonces: any[] = [];
-  categories: any[] = [];
-  sousCategories: any[] = [];
-  filteredSousCategories: any[] = [];
-  newAnnonce: any = {
-    article: {
-      nom: '',
-      description: '',
-      prixInitial: 0,
-      categorie: null,
-      sousCategorie: null,
-      marque: '',
-      etat: '',
-      image: null
-    },
-    enchere: {
-      prixActuel: 0
-    },
-    duree: 0,
-    statut: '',
-    dateDebut: new Date(),
-    dateFin: new Date()
-  };
+export class AnnonceListComponent implements OnInit {
+  annonces: Annonce[] = [];
+  vendeurs: { [key: number]: Vendeur } = {};
+  articles: { [key: number]: Article } = {};
+  dataSource = new MatTableDataSource<Annonce>();
+  displayedColumns: string[] = ['id', 'article', 'vendeur', 'duree', 'statut', 'dateDebut', 'dateFin', 'actions'];
+  isLoading: boolean = true;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private annonceService: AnnonceService,
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef
+  ) { }
 
-  ngOnInit() {
-    // Données mockées pour les catégories
-    this.categories = [
-      { id: 1, name: 'Électronique' },
-      { id: 2, name: 'Vêtements' },
-      { id: 3, name: 'Meubles' }
-    ];
+  ngOnInit(): void {
+    this.loadAnnonces();
+  }
 
-    // Données mockées pour les sous-catégories
-    this.sousCategories = [
-      { id: 1, name: 'Smartphones', categorieId: 1 },
-      { id: 2, name: 'Ordinateurs', categorieId: 1 },
-      { id: 3, name: 'T-Shirts', categorieId: 2 },
-      { id: 4, name: 'Chaises', categorieId: 3 }
-    ];
+  loadAnnonces(): void {
+    this.isLoading = true;
+    this.annonceService.getAnnonces().subscribe({
+      next: (annonces) => {
+        this.annonces = annonces;
+        this.dataSource.data = annonces;
 
-    // Annonces pré-remplies avec des images réelles
-    this.annonces = [
-      {
-        id: 1,
-        article: {
-          nom: 'iPhone 13',
-          description: 'Smartphone dernière génération',
-          prixInitial: 800,
-          categorie: this.categories[0],
-          sousCategorie: this.sousCategories[0],
-          marque: 'Apple',
-          etat: 'Neuf',
-          image: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-pink-select-2021?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1629842712000' // Image réelle de l'iPhone 13
-        },
-        enchere: { prixActuel: 850 },
-        duree: 7,
-        statut: 'En cours',
-        dateDebut: new Date('2025-04-01'),
-        dateFin: new Date('2025-04-08')
+        // Create arrays of observables for fetching vendeurs and articles
+        const vendeurRequests = annonces.map(annonce =>
+          this.annonceService.getVendeur(annonce.vendeurId).pipe(
+            catchError(err => {
+              console.error(`Erreur lors du chargement du vendeur ${annonce.vendeurId}:`, err);
+              return of(null);
+            })
+          )
+        );
+        const articleRequests = annonces.map(annonce =>
+          this.annonceService.getArticle(annonce.articleId).pipe(
+            catchError(err => {
+              console.error(`Erreur lors du chargement de l'article ${annonce.articleId}:`, err);
+              return of(null);
+            })
+          )
+        );
+
+        // Use forkJoin to wait for all requests to complete
+        forkJoin([...vendeurRequests, ...articleRequests]).subscribe({
+          next: (responses) => {
+            const vendeurResponses = responses.slice(0, annonces.length);
+            const articleResponses = responses.slice(annonces.length);
+
+            annonces.forEach((annonce, index) => {
+              const vendeur = vendeurResponses[index];
+              const article = articleResponses[index];
+              if (vendeur) {
+                this.vendeurs[annonce.vendeurId] = vendeur as Vendeur;
+              } else {
+                console.warn(`Vendeur ${annonce.vendeurId} non trouvé`);
+                this.vendeurs[annonce.vendeurId] = { id: annonce.vendeurId, nom: 'Inconnu', prenom: '', email: '', password: '' };
+              }
+              if (article) {
+                this.articles[annonce.articleId] = article as Article;
+              } else {
+                console.warn(`Article ${annonce.articleId} non trouvé`);
+                this.articles[annonce.articleId] = { id: annonce.articleId, nom: 'Inconnu', description: '', categorieId: '', prixInitial: 0, vendeurId: 0, sousCategorieId: '', marque: '', etat: '' };
+              }
+            });
+
+            this.isLoading = false;
+            this.cdr.detectChanges();
+          },
+          error: (err) => {
+            console.error('Erreur lors du chargement des données:', err);
+            this.isLoading = false;
+            this.cdr.detectChanges();
+          }
+        });
       },
-      {
-        id: 2,
-        article: {
-          nom: 'Chaise Design',
-          description: 'Chaise ergonomique moderne',
-          prixInitial: 150,
-          categorie: this.categories[2],
-          sousCategorie: this.sousCategories[3],
-          marque: 'Ikea',
-          etat: 'Bon',
-          image: 'https://www.ikea.com/us/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s' // Image réelle d'une chaise IKEA
-        },
-        enchere: { prixActuel: 165 },
-        duree: 5,
-        statut: 'En cours',
-        dateDebut: new Date('2025-04-03'),
-        dateFin: new Date('2025-04-08')
+      error: (err) => {
+        console.error('Erreur lors du chargement des annonces:', err);
+        this.isLoading = false;
+        this.cdr.detectChanges();
       }
-    ];
-  }
-
-  // Ouvre le modal
-  openModal(content: any) {
-    this.modalService.open(content, { 
-      ariaLabelledBy: 'modal-basic-title',
-      centered: true,
-      size: 'lg'
     });
   }
 
-  // Gère le changement de catégorie pour filtrer les sous-catégories
-  onCategorieChange() {
-    const selectedCategorie = this.newAnnonce.article.categorie;
-    if (selectedCategorie) {
-      this.filteredSousCategories = this.sousCategories.filter(
-        (sousCategorie) => sousCategorie.categorieId === selectedCategorie.id
-      );
-      this.newAnnonce.article.sousCategorie = null;
-    } else {
-      this.filteredSousCategories = [];
-    }
-  }
-
-  // Gère l'upload de l'image
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.newAnnonce.article.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
-  // Ajoute une nouvelle annonce
-  addAnnonce(modal: any) {
-    const dateDebut = new Date();
-    const dateFin = new Date(dateDebut);
-    dateFin.setDate(dateDebut.getDate() + this.newAnnonce.duree);
-
-    const annonce = {
-      id: this.annonces.length + 1,
-      article: { ...this.newAnnonce.article },
-      enchere: { prixActuel: this.newAnnonce.article.prixInitial },
-      duree: this.newAnnonce.duree,
-      statut: this.newAnnonce.statut,
-      dateDebut: dateDebut,
-      dateFin: dateFin
-    };
-
-    this.annonces.push(annonce);
-
-    this.newAnnonce = {
-      article: {
-        nom: '',
-        description: '',
-        prixInitial: 0,
-        categorie: null,
-        sousCategorie: null,
-        marque: '',
-        etat: '',
-        image: null
-      },
-      enchere: {
-        prixActuel: 0
-      },
-      duree: 0,
-      statut: '',
-      dateDebut: new Date(),
-      dateFin: new Date()
-    };
-
-    modal.close();
-  }
-
-  // Supprime une annonce
-  deleteAnnonce(id: number) {
-    if (confirm('Voulez-vous vraiment supprimer cette annonce ?')) {
-      this.annonces = this.annonces.filter(annonce => annonce.id !== id);
-    }
-  }
-
-  // Voir les détails d'une annonce
-  viewAnnonce(annonce: any) {
-    alert(`Détails de l'annonce:\nNom: ${annonce.article.nom}\nPrix: ${annonce.enchere.prixActuel}€\nStatut: ${annonce.statut}`);
-  }
-
-  // Modifier une annonce
-  editAnnonce(annonce: any, content: any) {
-    this.newAnnonce = JSON.parse(JSON.stringify(annonce));
-    const modalRef = this.modalService.open(content, { 
-      ariaLabelledBy: 'modal-basic-title',
-      centered: true,
-      size: 'lg'
+  openAddModal(): void {
+    const dialogRef = this.dialog.open(ModalAnnonceComponent, {
+      width: '500px',
+      maxHeight: '80vh'
     });
-    
-    modalRef.result.then(() => {
-      const index = this.annonces.findIndex(a => a.id === annonce.id);
-      if (index !== -1) {
-        this.annonces[index] = { ...this.newAnnonce };
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadAnnonces();
+      }
+    });
+  }
+
+  viewAnnonce(annonce: Annonce): void {
+    const article = this.articles[annonce.articleId];
+    const vendeur = this.vendeurs[annonce.vendeurId];
+    this.dialog.open(ViewAnnonceDialogComponent, {
+      width: '400px',
+      data: { annonce, article, vendeur }
+    });
+  }
+
+  editAnnonce(annonce: Annonce): void {
+    const article = this.articles[annonce.articleId];
+    const dialogRef = this.dialog.open(ModalAnnonceComponent, {
+      width: '500px',
+      maxHeight: '80vh',
+      data: { annonce, article }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadAnnonces();
+      }
+    });
+  }
+
+  deleteAnnonce(id: number): void {
+    const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
+      width: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.annonceService.deleteAnnonce(id).subscribe({
+          next: () => this.loadAnnonces(),
+          error: (err) => console.error('Erreur lors de la suppression:', err)
+        });
       }
     });
   }

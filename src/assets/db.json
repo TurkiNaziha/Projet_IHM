@@ -72,16 +72,6 @@
   ],
   "sousCategories": [
     {
-      "id": "1",
-      "name": "Chaises1",
-      "categorieId": "1",
-      "category": {
-        "id": "1",
-        "name": "Meubles",
-        "subCategories": []
-      }
-    },
-    {
       "id": "2",
       "name": "smart phone",
       "categorieId": "4",
@@ -110,16 +100,6 @@
       "id": "1",
       "name": "2",
       "categorieId": "2"
-    },
-    {
-      "id": "88",
-      "name": "88",
-      "categorieId": "121"
-    },
-    {
-      "id": "t",
-      "name": "t",
-      "categorieId": "4"
     }
   ]
 }
