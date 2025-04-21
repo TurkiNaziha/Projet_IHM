@@ -24,7 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { IconsComponent } from './pages/icons/icons.component';
+// import { IconsComponent } from './pages/icons/icons.component';
 
 @NgModule({
   imports: [

@@ -108,18 +108,18 @@ export class AnnonceListComponent implements OnInit {
     });
   }
 
-  openAddModal(): void {
-    const dialogRef = this.dialog.open(ModalAnnonceComponent, {
-      width: '500px',
-      maxHeight: '80vh'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.loadAnnonces();
-      }
-    });
-  }
+  // openAddModal(): void {
+  //   const dialogRef = this.dialog.open(ModalAnnonceComponent, {
+  //     width: '500px',
+  //     maxHeight: '80vh'
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result) {
+  //       this.loadAnnonces();
+  //     }
+  //   });
+  // }
 
   viewAnnonce(annonce: Annonce): void {
     const article = this.articles[annonce.articleId];
@@ -158,5 +158,20 @@ export class AnnonceListComponent implements OnInit {
         });
       }
     });
+  }
+
+
+  openAddModal():void {
+    const dialogRef = this.dialog.open(ModalAnnonceComponent, {
+      width: '500px',
+      maxHeight: '80vh'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadAnnonces();
+      }
+    });
+
   }
 }
