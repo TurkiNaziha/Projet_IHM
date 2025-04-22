@@ -1,3 +1,5 @@
+
+/* src/styles.scss */
 @use '@angular/material' as mat;
 
 @include mat.core();
@@ -32,9 +34,81 @@ $theme: mat.define-light-theme($primary, $accent);
 
 html, body {
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 body {
-  margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/* Réinitialiser les styles Bootstrap */
+.container-fluid,
+.container {
+  padding-left: 0 !important;
+  padding-right: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.row {
+  margin: 0;
+}
+
+[class*="col-"] {
+  padding-left: 0 ;
+  padding-right: 0;
+}
+
+/* S'assurer que tous les éléments utilisent box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+
+//
+//
+//
+//@use '@angular/material' as mat;
+//
+//@include mat.core();
+//
+//$primary: mat.define-palette(mat.$indigo-palette);
+//$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+//$theme: mat.define-light-theme($primary, $accent);
+//
+//@include mat.all-component-themes($theme);
+//
+//.centered-modal {
+//  .mat-dialog-container {
+//    position: fixed !important;
+//    top: 50% !important;
+//    left: 50% !important;
+//    transform: translate(-50%, -50%) !important;
+//    margin: 0 !important;
+//    width: 400px !important;
+//    max-width: 90vw !important;
+//    height: auto !important;
+//    max-height: 80vh !important;
+//    overflow: auto !important;
+//    padding: 20px !important;
+//    border-radius: 8px !important;
+//    background-color: #fff !important;
+//  }
+//}
+//
+//.cdk-overlay-dark-backdrop {
+//  background-color: rgba(0, 0, 0, 0.5) !important;
+//}
+//
+//html, body {
+//  height: 100%;
+//}
+//
+//body {
+//  margin: 0;
+//  font-family: Roboto, "Helvetica Neue", sans-serif;
+//}

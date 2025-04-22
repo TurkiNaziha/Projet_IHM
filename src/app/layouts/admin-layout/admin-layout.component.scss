@@ -1,11 +1,67 @@
+/////* src/app/layouts/admin-layout/admin-layout.component.scss */
+////.main-content {
+////  //display: flex;
+////  width: 100%;
+////  //overflow-x: hidden; /* Empêche le scroll horizontal */
+////}
+//
+////.content {
+////  flex: 1;
+////  padding: 20px;
+////}
+///* src/app/layouts/admin-layout/admin-layout.component.scss */
+//.main-content {
+//  width: 100%;
+//  padding: 0;
+//  margin: 0;
+//}
+//
+//.content {
+//  width: 100%;
+//  padding: 20px;
+//  box-sizing: border-box;
+//}
+//
+///* Ajuster le contenu pour éviter chevauchement avec la navbar fixe */
+//:host {
+//  display: block;
+//  padding-top: 120px; /* Hauteur approximative de la navbar (ajustez si nécessaire) */
+//}
+///* src/app/layouts/admin-layout/admin-layout.component.scss */
+//.main-content {
+//  width: 100%;
+//  padding: 0;
+//  margin: 0;
+//  box-sizing: border-box;
+//}
+//
+//.content {
+//  width: 100%;
+//  padding: 20px;
+//  margin: 0;
+//  box-sizing: border-box;
+//}
+//
+///* Ajuster le contenu pour éviter chevauchement avec la navbar fixe */
+//:host {
+//  display: block;
+//  padding-top: 120px; /* Ajustez selon la hauteur de votre navbar */
+//}
 /* src/app/layouts/admin-layout/admin-layout.component.scss */
 .main-content {
-  //display: flex;
   width: 100%;
-  //overflow-x: hidden; /* Empêche le scroll horizontal */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-//.content {
-//  flex: 1;
-//  padding: 20px;
-//}
+.content{
+  padding : 0 !important;
+}
+
+:host {
+  display: block;
+  padding-top: 120px;
+  margin: 0;
+}

@@ -47,18 +47,108 @@
   <div class="navbar-center">
     <a class="navbar-brand" routerLink="/">
       <i class="fas fa-gavel logo-icon"></i>
-      <span class="brand-logo ">EasyBid</span>
+      <span class="brand-logo">EasyBid</span>
     </a>
+    <div class="category-nav">
+      <button class="nav-arrow left-arrow" (click)="scrollCategories('left')" aria-label="Scroll left">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="category-list-wrapper" #categoryList>
+        <ul class="nav category-list">
+          <li class="nav-item" *ngFor="let category of categories" (mouseenter)="onCategoryHover(category.id)" (mouseleave)="onCategoryLeave()">
+            <a class="nav-link" (click)="navigateToCategory(category.id)">
+              {{ category.name | uppercase }}
+            </a>
+            <!-- Menu déroulant pour les sous-catégories -->
+            <div class="subcategory-menu" *ngIf="currentCategoryId === category.id && subCategories?.length > 0">
+              <ul class="subcategory-list">
+                <li *ngFor="let subCategory of subCategories">
+                  <a class="subcategory-link" (click)="navigateToCategory(category.id, subCategory.name)">
+                    {{ subCategory.name }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <button class="nav-arrow right-arrow" (click)="scrollCategories('right')" aria-label="Scroll right">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+<!--&lt;!&ndash; src/app/components/navbar/navbar.component.html &ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-md enchere-navbar">-->
+<!--  <div class="container-fluid navbar-top">-->
+<!--    &lt;!&ndash; Section gauche : Recherche &ndash;&gt;-->
+<!--    <div class="navbar-search">-->
+<!--      <div class="search-wrapper">-->
+<!--        <span class="search-icon">-->
+<!--          <i class="fas fa-search"></i>-->
+<!--        </span>-->
+<!--        <input-->
+<!--          class="search-input"-->
+<!--          placeholder="Rechercher"-->
+<!--          type="text"-->
+<!--          (focus)="focus = true"-->
+<!--          (blur)="focus = false"-->
+<!--          [ngClass]="{ 'focused': focus === true }"-->
+<!--        />-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Section droite : Compte et Panier &ndash;&gt;-->
+<!--    <ul class="navbar-nav user-actions">-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/account">-->
+<!--          <i class="fas fa-cog"></i> Settings-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/account">-->
+<!--          <i class="fas fa-history"></i> History-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/account">-->
+<!--          <i class="far fa-user"></i> Compte-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/cart">-->
+<!--          <i class="fas fa-shopping-bag"></i> Panier-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Logo et titre centrés avec les catégories en dessous &ndash;&gt;-->
+<!--  <div class="navbar-center">-->
+<!--    <a class="navbar-brand" routerLink="/">-->
+<!--      <i class="fas fa-gavel logo-icon"></i>-->
+<!--      <span class="brand-logo">EasyBid</span>-->
+<!--    </a>-->
 <!--    <div class="category-nav">-->
 <!--      <button class="nav-arrow left-arrow" (click)="scrollCategories('left')" aria-label="Scroll left">-->
 <!--        <i class="fas fa-chevron-left"></i>-->
 <!--      </button>-->
-<!--      <div class="category-list-wrapper">-->
+<!--      <div class="category-list-wrapper" #categoryList>-->
 <!--        <ul class="nav category-list">-->
-<!--          <li class="nav-item" *ngFor="let category of categories">-->
+<!--          <li class="nav-item" *ngFor="let category of categories" (mouseenter)="onCategoryHover(category.id)" (mouseleave)="onCategoryLeave()">-->
 <!--            <a class="nav-link" (click)="navigateToCategory(category.id)">-->
 <!--              {{ category.name | uppercase }}-->
 <!--            </a>-->
+<!--            &lt;!&ndash; Menu déroulant pour les sous-catégories &ndash;&gt;-->
+<!--            <div class="subcategory-menu" *ngIf="currentCategoryId === category.id && subCategories?.length > 0">-->
+<!--              <ul class="subcategory-list">-->
+<!--                <li *ngFor="let subCategory of subCategories">-->
+<!--                  <a class="subcategory-link" (click)="navigateToCategory(category.id, subCategory.name)">-->
+<!--                    {{ subCategory.name }}-->
+<!--                  </a>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </div>-->
 <!--          </li>-->
 <!--        </ul>-->
 <!--      </div>-->
@@ -66,32 +156,185 @@
 <!--        <i class="fas fa-chevron-right"></i>-->
 <!--      </button>-->
 <!--    </div>-->
-    <!-- src/app/components/navbar/navbar.component.html -->
-    <div class="category-nav">
-      <button class="nav-arrow left-arrow" (click)="scrollCategories('left')" aria-label="Scroll left">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <div class="category-list-wrapper" #categoryList>
-        <ul class="nav category-list">
-          <li class="nav-item" *ngFor="let category of categories">
-            <a class="nav-link" (click)="navigateToCategory(category.id)">
-              {{ category.name | uppercase }}
-            </a>
-          </li>
-        </ul>
-      </div>
-<!--      <div class="subcategory-menu">-->
-<!--        <ul class="subcategory-list">-->
-<!--          <li *ngFor="let subCategory of category.subCategories">-->
-<!--            <a class="subcategory-link" (click)="navigateToCategory(category.id + '/' + subCategory.toLowerCase())">-->
-<!--              {{ subCategory }}-->
+<!--  </div>-->
+<!--</nav>-->
+
+
+<!--&lt;!&ndash; src/app/components/navbar/navbar.component.html &ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-md enchere-navbar">-->
+<!--  <div class="container-fluid navbar-top">-->
+<!--    &lt;!&ndash; Section gauche : Recherche &ndash;&gt;-->
+<!--    <div class="navbar-search">-->
+<!--      <div class="search-wrapper">-->
+<!--        <span class="search-icon">-->
+<!--          <i class="fas fa-search"></i>-->
+<!--        </span>-->
+<!--        <input-->
+<!--          class="search-input"-->
+<!--          placeholder="Rechercher"-->
+<!--          type="text"-->
+<!--          (focus)="focus = true"-->
+<!--          (blur)="focus = false"-->
+<!--          [ngClass]="{ 'focused': focus === true }"-->
+<!--        />-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Section droite : Compte et Panier &ndash;&gt;-->
+<!--    <ul class="navbar-nav user-actions">-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/account">-->
+<!--          <i class="fas fa-cog"></i> Settings-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/account">-->
+<!--          <i class="fas fa-history"></i> History-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/account">-->
+<!--          <i class="far fa-user"></i> Compte-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" routerLink="/cart">-->
+<!--          <i class="fas fa-shopping-bag"></i> Panier-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Logo et titre centrés avec les catégories en dessous &ndash;&gt;-->
+<!--  <div class="navbar-center">-->
+<!--    <a class="navbar-brand" routerLink="/">-->
+<!--      <i class="fas fa-gavel logo-icon"></i>-->
+<!--      <span class="brand-logo">EasyBid</span>-->
+<!--    </a>-->
+<!--    <div class="category-nav">-->
+<!--      <button class="nav-arrow left-arrow" (click)="scrollCategories('left')" aria-label="Scroll left">-->
+<!--        <i class="fas fa-chevron-left"></i>-->
+<!--      </button>-->
+<!--      <div class="category-list-wrapper" #categoryList>-->
+<!--        <ul class="nav category-list">-->
+<!--          <li class="nav-item" *ngFor="let category of categories" (mouseenter)="onCategoryHover(category.id)" (mouseleave)="onCategoryLeave()">-->
+<!--            <a class="nav-link" (click)="navigateToCategory(category.id)">-->
+<!--              {{ category.name | uppercase }}-->
 <!--            </a>-->
+<!--            &lt;!&ndash; Menu déroulant pour les sous-catégories &ndash;&gt;-->
+<!--            <div class="subcategory-menu" *ngIf="currentCategoryId === category.id && subCategories?.length > 0">-->
+<!--              <ul class="subcategory-list">-->
+<!--                <li *ngFor="let subCategory of subCategories">-->
+<!--                  <a class="subcategory-link" (click)="navigateToCategory(category.id, subCategory.name)">-->
+<!--                    {{ subCategory.name }}-->
+<!--                  </a>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </div>-->
 <!--          </li>-->
 <!--        </ul>-->
 <!--      </div>-->
-      <button class="nav-arrow right-arrow" (click)="scrollCategories('right')" aria-label="Scroll right">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-    </div>
-  </div>
-</nav>
+<!--      <button class="nav-arrow right-arrow" (click)="scrollCategories('right')" aria-label="Scroll right">-->
+<!--        <i class="fas fa-chevron-right"></i>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+
+<!--&lt;!&ndash;&lt;!&ndash; src/app/components/navbar/navbar.component.html &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<nav class="navbar navbar-expand-md enchere-navbar">&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="container-fluid navbar-top">&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash; Section gauche : Recherche &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="navbar-search">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="search-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;        <span class="search-icon">&ndash;&gt;-->
+<!--&lt;!&ndash;          <i class="fas fa-search"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;        </span>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input&ndash;&gt;-->
+<!--&lt;!&ndash;          class="search-input"&ndash;&gt;-->
+<!--&lt;!&ndash;          placeholder="Rechercher"&ndash;&gt;-->
+<!--&lt;!&ndash;          type="text"&ndash;&gt;-->
+<!--&lt;!&ndash;          (focus)="focus = true"&ndash;&gt;-->
+<!--&lt;!&ndash;          (blur)="focus = false"&ndash;&gt;-->
+<!--&lt;!&ndash;          [ngClass]="{ 'focused': focus === true }"&ndash;&gt;-->
+<!--&lt;!&ndash;        />&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; Section droite : Compte et Panier &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <ul class="navbar-nav user-actions">&ndash;&gt;-->
+<!--&lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" routerLink="/account">&ndash;&gt;-->
+<!--&lt;!&ndash;          <i class="fas fa-cog"></i> Settings&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+<!--&lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" routerLink="/account">&ndash;&gt;-->
+<!--&lt;!&ndash;          <i class="fas fa-history"></i> History&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+<!--&lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" routerLink="/account">&ndash;&gt;-->
+<!--&lt;!&ndash;          <i class="far fa-user"></i> Compte&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+<!--&lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link" routerLink="/cart">&ndash;&gt;-->
+<!--&lt;!&ndash;          <i class="fas fa-shopping-bag"></i> Panier&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  &lt;!&ndash; Logo et titre centrés avec les catégories en dessous &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="navbar-center">&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="navbar-brand" routerLink="/">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fas fa-gavel logo-icon"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;      <span class="brand-logo ">EasyBid</span>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <div class="category-nav">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <button class="nav-arrow left-arrow" (click)="scrollCategories('left')" aria-label="Scroll left">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <i class="fas fa-chevron-left"></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      </button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <div class="category-list-wrapper">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <ul class="nav category-list">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;          <li class="nav-item" *ngFor="let category of categories">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <a class="nav-link" (click)="navigateToCategory(category.id)">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;              {{ category.name | uppercase }}&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            </a>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;          </li>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        </ul>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      <button class="nav-arrow right-arrow" (click)="scrollCategories('right')" aria-label="Scroll right">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <i class="fas fa-chevron-right"></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      </button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash; src/app/components/navbar/navbar.component.html &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="category-nav">&ndash;&gt;-->
+<!--&lt;!&ndash;      <button class="nav-arrow left-arrow" (click)="scrollCategories('left')" aria-label="Scroll left">&ndash;&gt;-->
+<!--&lt;!&ndash;        <i class="fas fa-chevron-left"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;      </button>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="category-list-wrapper" #categoryList>&ndash;&gt;-->
+<!--&lt;!&ndash;        <ul class="nav category-list">&ndash;&gt;-->
+<!--&lt;!&ndash;          <li class="nav-item" *ngFor="let category of categories">&ndash;&gt;-->
+<!--&lt;!&ndash;            <a class="nav-link" (click)="navigateToCategory(category.id)">&ndash;&gt;-->
+<!--&lt;!&ndash;              {{ category.name | uppercase }}&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;          </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="subcategory-menu" *ngIf="currentCategoryId === category.id && subCategories.length > 0">&ndash;&gt;-->
+<!--&lt;!&ndash;        <ul class="subcategory-list">&ndash;&gt;-->
+<!--&lt;!&ndash;          <li *ngFor="let subCategory of subCategories">&ndash;&gt;-->
+<!--&lt;!&ndash;            <a class="subcategory-link" (click)="navigateToCategory(category.id, subCategory.name)">&ndash;&gt;-->
+<!--&lt;!&ndash;              {{ subCategory.name }}&ndash;&gt;-->
+<!--&lt;!&ndash;            </a>&ndash;&gt;-->
+<!--&lt;!&ndash;          </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <button class="nav-arrow right-arrow" (click)="scrollCategories('right')" aria-label="Scroll right">&ndash;&gt;-->
+<!--&lt;!&ndash;        <i class="fas fa-chevron-right"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;      </button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</nav>&ndash;&gt;-->

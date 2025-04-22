@@ -1,146 +1,1374 @@
+/* src/app/pages/dashboard/dashboard.component.scss */
+
+/* Global Wrapper */
+.dashboard-wrapper {
+  font-family: 'Lora', serif;
+  color: #333;
+}
+
+.icon-red {
+  color: #e74c3c; /* Couleur rouge */
+}
+[class*="fa-"] {
+  transition: color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1); /* Effet d'agrandissement au survol */
+  }
+}
+
+.icon-gold {
+  color: #d4af37; /* Couleur or */
+}
+
+.icon-blue {
+  color: #1a73e8; /* Couleur bleu */
+}
+
+.icon-emerald {
+  color: #B19470; /* Couleur émeraude */
+}
+
+.icon-custom {
+  color: var(--icon-color, #333); /* Couleur par défaut si aucune variable n'est définie */
+}
+
+.custom-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  background: linear-gradient(45deg, var(--btn-bg-start), var(--btn-bg-end));
+  //background: #102E50;
+  color: white;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+
+  /* Effet de survol */
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+
+  /* Effet de vague au survol */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  /* Taille réduite pour les petits boutons */
+  &.btn-sm {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background : #B19470;
+  }
+  &.btn-sm1 {
+    padding: 6px 15px;
+    font-size: 0.7rem;
+  }
+
+  /* Bouton en outline */
+  &.btn-outline-blue {
+    background: transparent;
+    border-color: #1a73e8;
+    color: #1a73e8;
+    background: none;
+
+    &:hover {
+      background: linear-gradient(45deg, #1a73e8, #4a90e2);
+      border-color: transparent;
+      color: white;
+    }
+  }
+
+  /* Bouton lien (pour les catégories) */
+  &.btn-link {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    color: #1a73e8;
+    text-transform: none;
+    letter-spacing: 0;
+
+    &:hover {
+      background: none;
+      box-shadow: none;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Couleurs personnalisées pour les boutons */
+.custom-btn.btn-gold {
+  --btn-bg-start: #102E50;
+  --btn-bg-end: #DF9755;
+}
+
+.custom-btn.btn-blue {
+  --btn-bg-start: #B17F59;
+  --btn-bg-end: #3C552D;
+}
+
+.custom-btn.btn-emerald {
+  --btn-bg-start: #4E1F00;
+  --btn-bg-end: #EFDCAB ;
+}
+.custom-btn.btn-bttt {
+  --btn-bg-start: #4E1F00;
+  --btn-bg-end: #EFDCAB ;
+
+}
+
+/* Carousel Section */
+.carousel-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 570px; /* Hauteur augmentée pour un look plus immersif */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  filter: brightness(0.8); /* Assombrir légèrement pour le texte */
+}
+
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: #fff;
+  max-width: 500px;
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-primary {
+    background-color: #1a73e8;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #1557b0;
+    }
+  }
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
+
+.left-arrow {
+  left: 20px;
+}
+
+.right-arrow {
+  right: 20px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: white;
+}
+
+/* Introduction Section */
+.intro-section {
+  background-color: #f9f9f9;
+  padding: 60px 0;
+
+  .intro-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .intro-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .btn-outline-primary {
+    border-color: #1a73e8;
+    color: #1a73e8;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #1a73e8;
+      color: white;
+    }
+  }
+}
+
+/* Categories Section */
+.categories-section {
+  padding: 60px 0;
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .category-card {
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .category-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    h5 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .btn-link {
+      color: #1a73e8;
+      font-size: 0.9rem;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* Featured Auctions Section */
+.featured-section {
+  padding: 60px 0;
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .auction-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .auction-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .auction-content {
+      padding: 20px;
+
+      .auction-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #222;
+        margin-bottom: 10px;
+      }
+
+      .auction-description {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.5;
+        margin-bottom: 15px;
+      }
+
+      .btn-primary {
+        background-color: #1a73e8;
+        border: none;
+        border-radius: 20px;
+        padding: 8px 20px;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #1557b0;
+        }
+      }
+    }
+  }
+}
+
+/* Why Choose EasyBid Section */
+.why-choose-section {
+  padding: 60px 0;
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .feature-card {
+    i {
+      font-size: 2.5rem;
+      color: #1a73e8;
+    }
+
+    h5 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.5;
+    }
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .carousel-image {
+    height: 400px;
+  }
+
+  .carousel-content {
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      padding: 10px 25px;
+      font-size: 1rem;
+    }
+  }
+
+  .intro-section {
+    padding: 40px 0;
+
+    .intro-title {
+      font-size: 2rem;
+    }
+
+    .intro-subtitle {
+      font-size: 1.1rem;
+    }
+  }
+
+  .categories-section, .featured-section, .why-choose-section {
+    padding: 40px 0;
+
+    .section-title {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-image {
+    height: 300px;
+  }
+
+  .carousel-content {
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    max-width: 90%;
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      padding: 8px 20px;
+      font-size: 0.9rem;
+    }
+  }
+
+  .intro-section {
+    .intro-title {
+      font-size: 1.8rem;
+    }
+
+    .intro-subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .categories-section {
+    .category-image {
+      width: 80px;
+      height: 80px;
+    }
+
+    h5 {
+      font-size: 1rem;
+    }
+  }
+
+  .auction-card {
+    .auction-image {
+      height: 150px;
+    }
+
+
+    .auction-title {
+      font-size: 1.3rem;
+    }
+
+    .auction-description {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+
+////////////////
 ///* src/app/pages/dashboard/dashboard.component.scss */
-//.welcome-section {
-//  padding-top: 20px;
 //
-//  .card {
-//    background-color: #ca5126;
-//    border-radius: 10px;
+///* Carousel Section */
+//.carousel-section {
+//  width: 100%;
+//  margin: 0;
+//  padding: 0;
+//  overflow: hidden;
+//}
 //
-//    .card-header {
-//      padding: 30px;
+//.carousel-container {
+//  position: relative;
+//  width: 100%;
+//  margin: 0;
+//  padding: 0;
+//}
 //
-//      h1 {
-//        font-size: 48px;
-//        font-weight: bold;
+//.carousel-slides {
+//  display: flex;
+//  transition: transform 0.5s ease-in-out;
+//}
+//
+//.carousel-slide {
+//  min-width: 100%;
+//  box-sizing: border-box;
+//}
+//
+//.carousel-image {
+//  width: 100%;
+//  height: 400px; /* Augmenter la hauteur pour un meilleur affichage */
+//  background-size: contain; /* Utiliser contain pour éviter la distorsion */
+//  background-repeat: no-repeat; /* Éviter la répétition de l'image */
+//  background-position: center; /* Centrer l'image */
+//  position: relative;
+//  background-color: #f5f5f5; /* Couleur de fond pour les zones vides */
+//}
+//
+//.carousel-content {
+//  position: absolute;
+//  top: 50%;
+//  left: 5%; /* Utiliser un pourcentage pour un positionnement plus flexible */
+//  transform: translateY(-50%);
+//  z-index: 1;
+//  color: #fff;
+//  max-width: 90%; /* S'assurer que le contenu ne déborde pas */
+//
+//  h1 {
+//    font-family: 'Playfair Display', serif;
+//    font-size: 2.5rem; /* Augmenter la taille pour plus de visibilité */
+//    font-weight: 500;
+//    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Ombre pour meilleure lisibilité */
+//  }
+//
+//  h6 {
+//    font-family: 'Lora', serif;
+//    font-size: 1.2rem; /* Augmenter légèrement la taille */
+//    color: rgb(33, 33, 114) !important;
+//    line-height: 1.5;
+//    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Ombre pour meilleure lisibilité */
+//  }
+//
+//  button {
+//    font-family: 'Lora', serif;
+//    border-radius: 20px;
+//    padding: 10px 30px; /* Ajuster le padding pour un bouton plus visible */
+//    font-size: 1rem;
+//  }
+//}
+//
+//.carousel-arrow {
+//  position: absolute;
+//  top: 50%;
+//  transform: translateY(-50%);
+//  background-color: rgba(255, 255, 255, 0.8);
+//  border: none;
+//  border-radius: 50%;
+//  width: 40px;
+//  height: 40px;
+//  font-size: 24px;
+//  cursor: pointer;
+//  z-index: 10;
+//}
+//
+//.left-arrow {
+//  left: 10px;
+//}
+//
+//.right-arrow {
+//  right: 10px;
+//}
+//
+//.carousel-dots {
+//  position: absolute;
+//  bottom: 10px;
+//  left: 50%;
+//  transform: translateX(-50%);
+//  display: flex;
+//  gap: 10px;
+//}
+//
+//.dot {
+//  width: 10px;
+//  height: 10px;
+//  background-color: rgba(255, 255, 255, 0.5);
+//  border-radius: 50%;
+//  cursor: pointer;
+//}
+//
+//.dot.active {
+//  background-color: white;
+//}
+//
+///* Categories Section */
+//.header {
+//  padding: 40px 0;
+//  overflow-x: hidden;
+//
+//  .row {
+//    flex-wrap: wrap !important;
+//    justify-content: center;
+//  }
+//
+//  .rounded-circle {
+//    margin: 0 auto;
+//    transition: transform 0.2s;
+//
+//    &:hover {
+//      transform: scale(1.05);
+//    }
+//  }
+//
+//  h5 {
+//    font-size: 18px;
+//    font-weight: bold;
+//  }
+//
+//  p {
+//    margin: 0;
+//  }
+//
+//  .btn {
+//    background-color: #5CAFE7;
+//    color: white;
+//    border-radius: 20px;
+//    padding: 8px 20px;
+//    font-family: 'Lora', serif;
+//    transition: background-color 0.3s ease;
+//
+//    &:hover {
+//      background-color: #4A9FD5;
+//    }
+//  }
+//}
+//
+///* Elegant Sections (Auction Your Treasures, Showcase Your Collectibles) */
+//.container-fluid {
+//  padding-left: 15px;
+//  padding-right: 15px;
+//  overflow-x: hidden;
+//
+//  &.mt-3, &.mt-5 {
+//    .row {
+//      margin: 0;
+//    }
+//
+//    .col-xl-12 {
+//      padding: 0;
+//    }
+//
+//    .elegant-card {
+//      border: 1px solid #e0e0e0;
+//      border-radius: 10px;
+//      overflow: hidden;
+//      transition: all 0.3s ease;
+//
+//      &:hover {
+//        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 //      }
 //
-//      h6 {
-//        font-size: 14px;
-//        line-height: 1.5;
+//      .card-header {
+//        padding: 1.5rem;
 //      }
+//    }
 //
-//      .btn {
-//        background-color: #dcc5ba;
-//        color: #333;
-//        font-weight: bold;
-//        border: none;
-//        padding: 10px 20px;
-//        border-radius: 5px;
+//    .elegant-title {
+//      font-family: 'Playfair Display', serif;
+//      font-weight: 500;
+//      font-size: 2rem;
+//      color: #333;
+//    }
 //
-//        &:hover {
-//          background-color: #ccc;
-//        }
+//    .elegant-subtitle {
+//      font-family: 'Lora', serif;
+//      font-size: 1rem;
+//      color: #666;
+//      line-height: 1.5;
+//    }
+//
+//    .elegant-btn {
+//      background: transparent;
+//      border: 2px solid #7c7e80;
+//      color: #BDA18A;
+//      border-radius: 20px;
+//      padding: 8px 25px;
+//      font-family: 'Lora', serif;
+//      font-weight: 500;
+//      transition: all 0.3s ease;
+//
+//      &:hover {
+//        background: #b3b5b7;
+//        color: white;
+//        border-color: #aac8dc;
+//      }
+//    }
+//
+//    .elegant-img {
+//      border-radius: 8px;
+//      transition: transform 0.3s ease;
+//
+//      &:hover {
+//        transform: scale(1.03);
 //      }
 //    }
 //  }
 //}
 //
-//.categories-section {
-//  padding: 40px 0;
-//  overflow-x: hidden; /* Empêche le scroll horizontal */
+///* Phones & Bags Section */
+//.container-fluid.mt-5 {
+//  .items-container {
+//    position: relative;
+//    overflow: hidden;
+//  }
 //
-//  .row {
-//    flex-wrap: wrap !important; /* Permet aux cartes de passer à la ligne si nécessaire */
-//    justify-content: center;
+//  .items-list {
+//    overflow-x: auto;
+//    white-space: nowrap;
+//    scroll-behavior: smooth;
+//    -webkit-overflow-scrolling: touch;
+//
+//    &::-webkit-scrollbar {
+//      display: none;
+//    }
+//  }
+//
+//  .item-arrow {
+//    position: absolute;
+//    top: 50%;
+//    transform: translateY(-50%);
+//    background-color: rgba(255, 255, 255, 0.8);
+//    border: none;
+//    border-radius: 50%;
+//    width: 40px;
+//    height: 40px;
+//    font-size: 24px;
+//    cursor: pointer;
+//    z-index: 10;
+//
+//    &.left-arrow {
+//      left: 10px;
+//    }
+//
+//    &.right-arrow {
+//      right: 10px;
+//    }
 //  }
 //
 //  .card {
 //    transition: transform 0.2s;
 //
 //    &:hover {
-//      transform: translateY(-5px);
-//    }
-//
-//    .card-body {
-//      padding: 20px;
-//
-//      .rounded-circle {
-//        margin: 0 auto;
-//      }
-//
-//      h5 {
-//        font-size: 18px;
-//        font-weight: bold;
-//      }
-//
-//      p {
-//        margin: 0;
-//      }
+//      transform: scale(1.05);
 //    }
 //  }
 //}
 //
-//.container-fluid {
-//  padding-left: 15px;
-//  padding-right: 15px;
-//  overflow-x: hidden; /* Empêche le scroll horizontal */
+///* Responsive Adjustments */
+//@media (max-width: 768px) {
+//  .carousel-image {
+//    height: 250px; /* Réduire la hauteur pour les petits écrans */
+//  }
 //
-//  .card {
-//    //background-color: #ca5126;
-//    border-radius: 10px;
+//  .carousel-content {
+//    text-align: center;
+//    left: 50%;
+//    transform: translateX(-50%) translateY(-50%);
+//    width: 90%;
 //
-//    .card-header {
-//      padding: 30px;
+//    h1 {
+//      font-size: 1.8rem;
+//    }
 //
-//      h1 {
-//        font-size: 36px;
-//        font-weight: bold;
-//      }
+//    h6 {
+//      font-size: 1rem;
+//    }
 //
-//      h6 {
-//        font-size: 14px;
-//        line-height: 1.5;
-//      }
+//    button {
+//      padding: 8px 20px;
+//      font-size: 0.9rem;
+//    }
+//  }
 //
-//      .btn {
-//        background-color: #dcc5ba;
-//        color: #333;
-//        font-weight: bold;
-//        border: none;
-//        padding: 10px 20px;
-//        border-radius: 5px;
+//  .container-fluid.mt-3, .container-fluid mt-5 {
+//    .row {
+//      flex-direction: column;
+//    }
 //
-//        &:hover {
-//          background-color: #ccc;
-//        }
-//      }
+//    .col-6 {
+//      width: 100%;
+//      text-align: center;
+//    }
+//
+//    .elegant-img {
+//      max-height: 150px;
+//      margin: 0 auto;
+//    }
+//  }
+//
+//  .header {
+//    .row {
+//      flex-wrap: wrap !important;
 //    }
 //  }
 //}
-//___
-.carousel-inner {
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-
-.carousel-item {
-  transition: transform 0.6s ease-in-out;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-  width: 5%;
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.carousel-indicators [data-bs-target] {
-  background-color: #dcc5ba;
-}
-
-.carousel-indicators .active {
-  background-color: #ffffff;
-}
-
-@media (max-width: 768px) {
-  .carousel .row {
-    flex-direction: column;
-  }
-  .carousel .col-6 {
-    width: 100%;
-    text-align: center;
-  }
-  .carousel img {
-    max-height: 200px;
-    margin: 0 auto;
-  }
-}
+//
+//
+//
+///////////////////////
+/////* src/app/pages/dashboard/dashboard.component.scss */
+/////* Carousel Section */
+////.carousel-section {
+////  width: 100%;
+////  margin: 0;
+////  padding: 0;
+////  overflow: hidden;
+////}
+////
+////.carousel-container {
+////  position: relative;
+////  width: 100%;
+////  margin: 0;
+////  padding: 0;
+////}
+////
+////.carousel-slides {
+////  display: flex;
+////  transition: transform 0.5s ease-in-out;
+////}
+////
+////.carousel-slide {
+////  min-width: 100%;
+////  box-sizing: border-box;
+////}
+////
+////.carousel-image {
+////  width: 100%;
+////  height: 300px;
+////  background-size: cover;
+////  background-position: center;
+////  position: relative;
+////}
+////
+////.carousel-content {
+////  position: absolute;
+////  top: 50%;
+////  left: 20px;
+////  transform: translateY(-50%);
+////  z-index: 1;
+////  color: #fff;
+////
+////  h1 {
+////    font-family: 'Playfair Display', serif;
+////    font-size: 2rem;
+////    font-weight: 500;
+////  }
+////
+////  h6 {
+////    font-family: 'Lora', serif;
+////    font-size: 1rem;
+////    color: rgb(33, 33, 114) !important;
+////    line-height: 1.5;
+////  }
+////
+////  button {
+////    font-family: 'Lora', serif;
+////    border-radius: 20px;
+////    padding: 8px 25px;
+////  }
+////}
+////
+////.carousel-arrow {
+////  position: absolute;
+////  top: 50%;
+////  transform: translateY(-50%);
+////  background-color: rgba(255, 255, 255, 0.8);
+////  border: none;
+////  border-radius: 50%;
+////  width: 40px;
+////  height: 40px;
+////  font-size: 24px;
+////  cursor: pointer;
+////  z-index: 10;
+////}
+////
+////.left-arrow {
+////  left: 10px;
+////}
+////
+////.right-arrow {
+////  right: 10px;
+////}
+////
+////.carousel-dots {
+////  position: absolute;
+////  bottom: 10px;
+////  left: 50%;
+////  transform: translateX(-50%);
+////  display: flex;
+////  gap: 10px;
+////}
+////
+////.dot {
+////  width: 10px;
+////  height: 10px;
+////  background-color: rgba(255, 255, 255, 0.5);
+////  border-radius: 50%;
+////  cursor: pointer;
+////}
+////
+////.dot.active {
+////  background-color: white;
+////}
+////
+/////* Categories Section */
+////.header {
+////  padding: 40px 0;
+////  overflow-x: hidden;
+////
+////  .row {
+////    flex-wrap: wrap !important;
+////    justify-content: center;
+////  }
+////
+////  .rounded-circle {
+////    margin: 0 auto;
+////    transition: transform 0.2s;
+////
+////    &:hover {
+////      transform: scale(1.05);
+////    }
+////  }
+////
+////  h5 {
+////    font-size: 18px;
+////    font-weight: bold;
+////  }
+////
+////  p {
+////    margin: 0;
+////  }
+////
+////  .btn {
+////    background-color: #5CAFE7;
+////    color: white;
+////    border-radius: 20px;
+////    padding: 8px 20px;
+////    font-family: 'Lora', serif;
+////    transition: background-color 0.3s ease;
+////
+////    &:hover {
+////      background-color: #4A9FD5;
+////    }
+////  }
+////}
+////
+/////* Elegant Sections (Auction Your Treasures, Showcase Your Collectibles) */
+////.container-fluid {
+////  padding-left: 15px;
+////  padding-right: 15px;
+////  overflow-x: hidden;
+////
+////  &.mt-3, &.mt-5 {
+////    .row {
+////      margin: 0;
+////    }
+////
+////    .col-xl-12 {
+////      padding: 0;
+////    }
+////
+////    .elegant-card {
+////      border: 1px solid #e0e0e0;
+////      border-radius: 10px;
+////      overflow: hidden;
+////      transition: all 0.3s ease;
+////
+////      &:hover {
+////        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+////      }
+////
+////      .card-header {
+////        padding: 1.5rem;
+////      }
+////    }
+////
+////    .elegant-title {
+////      font-family: 'Playfair Display', serif;
+////      font-weight: 500;
+////      font-size: 2rem;
+////      color: #333;
+////    }
+////
+////    .elegant-subtitle {
+////      font-family: 'Lora', serif;
+////      font-size: 1rem;
+////      color: #666;
+////      line-height: 1.5;
+////    }
+////
+////    .elegant-btn {
+////      background: transparent;
+////      border: 2px solid #7c7e80;
+////      color: #BDA18A;
+////      border-radius: 20px;
+////      padding: 8px 25px;
+////      font-family: 'Lora', serif;
+////      font-weight: 500;
+////      transition: all 0.3s ease;
+////
+////      &:hover {
+////        background: #b3b5b7;
+////        color: white;
+////        border-color: #aac8dc;
+////      }
+////    }
+////
+////    .elegant-img {
+////      border-radius: 8px;
+////      transition: transform 0.3s ease;
+////
+////      &:hover {
+////        transform: scale(1.03);
+////      }
+////    }
+////  }
+////}
+////
+/////* Phones & Bags Section */
+////.container-fluid.mt-5 {
+////  .items-container {
+////    position: relative;
+////    overflow: hidden;
+////  }
+////
+////  .items-list {
+////    overflow-x: auto;
+////    white-space: nowrap;
+////    scroll-behavior: smooth;
+////    -webkit-overflow-scrolling: touch;
+////
+////    &::-webkit-scrollbar {
+////      display: none;
+////    }
+////  }
+////
+////  .item-arrow {
+////    position: absolute;
+////    top: 50%;
+////    transform: translateY(-50%);
+////    background-color: rgba(255, 255, 255, 0.8);
+////    border: none;
+////    border-radius: 50%;
+////    width: 40px;
+////    height: 40px;
+////    font-size: 24px;
+////    cursor: pointer;
+////    z-index: 10;
+////
+////    &.left-arrow {
+////      left: 10px;
+////    }
+////
+////    &.right-arrow {
+////      right: 10px;
+////    }
+////  }
+////
+////  .card {
+////    transition: transform 0.2s;
+////
+////    &:hover {
+////      transform: scale(1.05);
+////    }
+////  }
+////}
+////
+/////* Responsive Adjustments */
+////@media (max-width: 768px) {
+////  .carousel-content {
+////    text-align: center;
+////    left: 50%;
+////    transform: translateX(-50%) translateY(-50%);
+////    width: 90%;
+////
+////    h1 {
+////      font-size: 1.5rem;
+////    }
+////
+////    h6 {
+////      font-size: 0.9rem;
+////    }
+////  }
+////
+////  .container-fluid.mt-3, .container-fluid.mt-5 {
+////    .row {
+////      flex-direction: column;
+////    }
+////
+////    .col-6 {
+////      width: 100%;
+////      text-align: center;
+////    }
+////
+////    .elegant-img {
+////      max-height: 150px;
+////      margin: 0 auto;
+////    }
+////  }
+////
+////  .header {
+////    .row {
+////      flex-wrap: wrap !important;
+////    }
+////  }
+////}
+////
+////
+////
+////
+////
+////
+/////* src/app/pages/dashboard/dashboard.component.scss */
+////.carousel-section {
+////  width: 100%;
+////  margin: 0;
+////  padding: 0;
+////  overflow: hidden;
+////}
+////
+////.carousel-container {
+////  position: relative;
+////  width: 100%;
+////  margin: 0;
+////  padding: 0;
+////}
+////
+////.container-fluid {
+////  padding-left: 0;
+////  padding-right: 0;
+////  margin: 0;
+////  width: 100%;
+////  box-sizing: border-box;
+////
+////  .row {
+////    margin: 0;
+////  }
+////
+////  .col-xl-12 {
+////    padding: 0;
+////  }
+////}
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+////
+/////////* src/app/pages/dashboard/dashboard.component.scss */
+////////.welcome-section {
+////////  padding-top: 20px;
+////////
+////////  .card {
+////////    background-color: #ca5126;
+////////    border-radius: 10px;
+////////
+////////    .card-header {
+////////      padding: 30px;
+////////
+////////      h1 {
+////////        font-size: 48px;
+////////        font-weight: bold;
+////////      }
+////////
+////////      h6 {
+////////        font-size: 14px;
+////////        line-height: 1.5;
+////////      }
+////////
+////////      .btn {
+////////        background-color: #dcc5ba;
+////////        color: #333;
+////////        font-weight: bold;
+////////        border: none;
+////////        padding: 10px 20px;
+////////        border-radius: 5px;
+////////
+////////        &:hover {
+////////          background-color: #ccc;
+////////        }
+////////      }
+////////    }
+////////  }
+////////}
+////////
+////////.categories-section {
+////////  padding: 40px 0;
+////////  overflow-x: hidden; /* Empêche le scroll horizontal */
+////////
+////////  .row {
+////////    flex-wrap: wrap !important; /* Permet aux cartes de passer à la ligne si nécessaire */
+////////    justify-content: center;
+////////  }
+////////
+////////  .card {
+////////    transition: transform 0.2s;
+////////
+////////    &:hover {
+////////      transform: translateY(-5px);
+////////    }
+////////
+////////    .card-body {
+////////      padding: 20px;
+////////
+////////      .rounded-circle {
+////////        margin: 0 auto;
+////////      }
+////////
+////////      h5 {
+////////        font-size: 18px;
+////////        font-weight: bold;
+////////      }
+////////
+////////      p {
+////////        margin: 0;
+////////      }
+////////    }
+////////  }
+////////}
+////////
+////////.container-fluid {
+////////  padding-left: 15px;
+////////  padding-right: 15px;
+////////  overflow-x: hidden; /* Empêche le scroll horizontal */
+////////
+////////  .card {
+////////    //background-color: #ca5126;
+////////    border-radius: 10px;
+////////
+////////    .card-header {
+////////      padding: 30px;
+////////
+////////      h1 {
+////////        font-size: 36px;
+////////        font-weight: bold;
+////////      }
+////////
+////////      h6 {
+////////        font-size: 14px;
+////////        line-height: 1.5;
+////////      }
+////////
+////////      .btn {
+////////        background-color: #dcc5ba;
+////////        color: #333;
+////////        font-weight: bold;
+////////        border: none;
+////////        padding: 10px 20px;
+////////        border-radius: 5px;
+////////
+////////        &:hover {
+////////          background-color: #ccc;
+////////        }
+////////      }
+////////    }
+////////  }
+////////}
+////////___
+//////.carousel-inner {
+//////  border-radius: 0.5rem;
+//////  overflow: hidden;
+//////}
+//////
+//////.carousel-item {
+//////  transition: transform 0.6s ease-in-out;
+//////}
+//////
+//////.carousel-control-prev,
+//////.carousel-control-next {
+//////  width: 5%;
+//////  background: rgba(0, 0, 0, 0.3);
+//////}
+//////
+//////.carousel-indicators [data-bs-target] {
+//////  background-color: #dcc5ba;
+//////}
+//////
+//////.carousel-indicators .active {
+//////  background-color: #ffffff;
+//////}
+//////
+//////@media (max-width: 768px) {
+//////  .carousel .row {
+//////    flex-direction: column;
+//////  }
+//////  .carousel .col-6 {
+//////    width: 100%;
+//////    text-align: center;
+//////  }
+//////  .carousel img {
+//////    max-height: 200px;
+//////    margin: 0 auto;
+//////  }
+//////}

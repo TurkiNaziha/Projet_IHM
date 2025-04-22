@@ -1,12 +1,27 @@
-/* src/app/layouts/public-layout/public-layout.component.scss */
+///* src/app/layouts/public-layout/public-layout.component.scss */
 //.main-content {
-//  width: 100%;
-//  padding: 0;
+// width: 100%;
+// padding: 0;
 //}
 /* src/app/layouts/public-layout/public-layout.component.scss */
 //.main-content {
-//  width: 100%;
-//  padding: 0;
-//  overflow-x: hidden; /* Empêche le scroll horizontal */
+// width: 100%;
+// padding: 0;
+// //overflow-x: hidden; /* Empêche le scroll horizontal */
 //}
 
+.main-content {
+  //width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.content{
+  padding: 0 !important;
+}
+
+
+/* Ajuster le contenu pour éviter chevauchement avec la navbar fixe */
+:host {
+  display: block;
+  padding-top: 120px; /* Hauteur approximative de la navbar (ajustez si nécessaire) */
+}

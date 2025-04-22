@@ -130,7 +130,7 @@
     position: relative;
 
     .category-list-wrapper {
-      overflow-x: hidden; /* Cache le contenu qui dépasse */
+      overflow-x: visible; /* Cache le contenu qui dépasse */
       width: 100%;
       flex: 1;
 
@@ -206,4 +206,57 @@
 :host {
   display: block;
   padding-top: 120px; /* Hauteur approximative de la navbar (ajustez si nécessaire) */
+}
+.subcategory-link {
+  text-decoration: none;
+  color: #555; /* Couleur plus claire pour les sous-catégories */
+  font-size: 13px;
+  font-family: 'Times New Roman', Times, serif;
+  display: block; /* Prend toute la largeur pour une meilleure zone cliquable */
+  transition: color 0.3s ease; /* Transition fluide pour le survol */
+
+  &:hover {
+    color: #000; /* Couleur plus foncée au survol */
+    text-decoration: underline; /* Soulignement au survol */
+  }
+}
+//
+//.subcategory-menu {
+//  position: absolute;
+//  top: 100%; /* Positionne le menu juste en dessous de la catégorie */
+//  left: 50%;
+//  transform: translateX(-50%); /* Centre le menu sous la catégorie */
+//  background-color: #fff; /* Fond blanc */
+//  border: 1px solid #e5e5e5; /* Bordure légère */
+//  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+//  padding: 10px; /* Padding interne */
+//  z-index: 1001; /* Augmenté pour s'assurer qu'il est au-dessus des autres éléments */
+//  min-width: 200px; /* Largeur minimale */
+//  border-radius: 4px; /* Coins arrondis */
+//  visibility: visible; /* Forcer la visibilité */
+//  opacity: 1; /* Forcer l'opacité */
+//
+  .subcategory-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 2px 0; /* Espacement entre les sous-catégories */
+
+      .subcategory-link {
+        color: #555; /* Police plus claire */
+        font-size: 16px;
+        font-family: 'Times New Roman', Times, serif;
+        text-decoration: none;
+        display: block; /* Prend toute la largeur */
+        transition: color 0.3s ease; /* Transition fluide pour le survol */
+
+        &:hover {
+          color: #000; /* Couleur plus foncée au survol */
+          text-decoration: underline;
+        }
+      }
+    //}
+  }
 }
