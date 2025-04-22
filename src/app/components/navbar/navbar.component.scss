@@ -55,7 +55,10 @@
       background: none; /* Supprime le fond blanc */
       border: none; /* Supprime la bordure autour du wrapper */
       border-bottom: 1px solid #ccc; /* Ajoute une bordure inférieure grise */
-      padding: 5px 0; /* Ajuste le padding */
+      //padding: 15px 0; /* Ajuste le padding */
+      padding-bottom: 10px;
+      padding-top: 10px;
+      padding-left: 10px;
       max-width: 250px;
       transition: border-color 0.3s ease;
 
@@ -67,7 +70,7 @@
       .search-icon {
         //color: #666;
         margin-right: 8px;
-        font-size: 16px;
+        font-size: 20px;
       }
 
       .search-input {
@@ -77,7 +80,7 @@
         font-size: 14px;
         color: #333;
         width: 100%;
-        padding: 0; /* Supprime le padding interne pour un look minimaliste */
+        padding-left: 0; /* Supprime le padding interne pour un look minimaliste */
 
         &::placeholder {
           //color: #999;
