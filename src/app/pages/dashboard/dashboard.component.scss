@@ -6,9 +6,7 @@
   color: #333;
 }
 
-.icon-red {
-  color: #e74c3c; /* Couleur rouge */
-}
+/* Custom Icon Styles */
 [class*="fa-"] {
   transition: color 0.3s ease, transform 0.3s ease;
 
@@ -17,19 +15,23 @@
   }
 }
 
-.icon-gold {
+.feature-card .icon-gold {
   color: #d4af37; /* Couleur or */
 }
 
-.icon-blue {
+.feature-card .icon-red {
+  color: #e74c3c; /* Couleur rouge */
+}
+
+.feature-card .icon-blue {
   color: #1a73e8; /* Couleur bleu */
 }
 
-.icon-emerald {
+.feature-card .icon-emerald {
   color: #B19470; /* Couleur émeraude */
 }
 
-.icon-custom {
+.feature-card .icon-custom {
   color: var(--icon-color, #333); /* Couleur par défaut si aucune variable n'est définie */
 }
 
@@ -282,15 +284,15 @@
   }
 
   .btn-outline-primary {
-    border-color: #1a73e8;
-    color: #1a73e8;
+    border-color: #B19470;
+    color: #B19470;
     border-radius: 25px;
     padding: 10px 25px;
     font-size: 1.1rem;
     transition: all 0.3s ease;
 
     &:hover {
-      background-color: #1a73e8;
+      background-color: #B19470;
       color: white;
     }
   }
@@ -327,7 +329,7 @@
     }
 
     .btn-link {
-      color: #1a73e8;
+      color: #B19470;
       font-size: 0.9rem;
       text-decoration: none;
 
@@ -414,7 +416,7 @@
   .feature-card {
     i {
       font-size: 2.5rem;
-      color: #1a73e8;
+      color: #B19470;
     }
 
     h5 {
