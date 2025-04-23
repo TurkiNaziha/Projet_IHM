@@ -186,12 +186,12 @@ export class NavbarComponent implements OnInit {
 
   navigateToCreateCategory(): void {
     this.isDropdownOpen = false; // Close dropdown after navigation
-    this.router.navigate(['/create-category']); // Adjust route as needed
+    this.router.navigate(['/maps']); // Adjust route as needed
   }
 
   navigateToCreateSubCategory(): void {
     this.isDropdownOpen = false; // Close dropdown after navigation
-    this.router.navigate(['/create-subcategory']); // Adjust route as needed
+    this.router.navigate(['/tables']); // Adjust route as needed
   }
 
 

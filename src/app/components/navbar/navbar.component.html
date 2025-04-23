@@ -20,9 +20,9 @@
 
     <!-- Section droite : Compte et Panier -->
     <ul class="navbar-nav user-actions">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/account">
-          <i class="fas fa-cog" (click)="toggleDropdown"></i> Settings
+      <li class="nav-item dropdown">
+        <a class="nav-link" (click)="toggleDropdown()" style="cursor: pointer;">
+          <i class="fas fa-cog"></i> Settings
         </a>
         <div class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }">
           <ul>
