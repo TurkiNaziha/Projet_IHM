@@ -49,11 +49,10 @@
 //}
 /* src/app/layouts/admin-layout/admin-layout.component.scss */
 .main-content {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
+  //width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+
 }
 
 .content{
@@ -63,5 +62,4 @@
 :host {
   display: block;
   padding-top: 120px;
-  margin: 0;
 }

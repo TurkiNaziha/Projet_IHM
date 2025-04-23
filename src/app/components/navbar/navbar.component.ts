@@ -107,6 +107,8 @@ export class NavbarComponent implements OnInit {
   public subCategories: SubCategory[];
   public location: Location;
   currentCategoryId: string | null = null;
+  isDropdownOpen: boolean = false;
+  isLogin : boolean = false;
   @ViewChild('categoryList', { static: false }) categoryList!: ElementRef;
 
   constructor(
@@ -117,11 +119,26 @@ export class NavbarComponent implements OnInit {
     private sc:SubCategoryService
   ) {
     this.location = location;
+    this.router.events.subscribe(() => {
+      this.isLogin = this.router.url.includes('login')
+      console.log(this.isLogin);
+    })
   }
 
   ngOnInit() {
     // Charger les catégories
     this.loadCategories();
+  }
+  logout(): void {
+    localStorage.removeItem('token');
+    this.clearFavorites();
+    this.router.navigate(['/home']);
+
+  }
+
+  clearFavorites() {
+    // this.favorites = [];
+    sessionStorage.removeItem('favorites');
   }
 
   loadCategories(): void {
@@ -162,6 +179,19 @@ export class NavbarComponent implements OnInit {
   onCategoryLeave(): void {
     this.currentCategoryId = null;
     this.subCategories = [];
+  }
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen; // Toggle dropdown visibility
+  }
+
+  navigateToCreateCategory(): void {
+    this.isDropdownOpen = false; // Close dropdown after navigation
+    this.router.navigate(['/create-category']); // Adjust route as needed
+  }
+
+  navigateToCreateSubCategory(): void {
+    this.isDropdownOpen = false; // Close dropdown after navigation
+    this.router.navigate(['/create-subcategory']); // Adjust route as needed
   }
 
 

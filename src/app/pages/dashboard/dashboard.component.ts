@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     // Lancer l'auto-slide toutes les 5 secondes
     setInterval(() => {
       this.nextSlide();
-    }, 100000);
+    }, 10000);
   }
 
   prevSlide(): void {
@@ -38,7 +38,9 @@ export class DashboardComponent implements OnInit {
   goToSlide(index: number): void {
     this.currentSlide = index;
   }
+
 }
+
 
 // import { Component, OnInit, OnDestroy } from '@angular/core';
 // import Chart from 'chart.js';
