@@ -52,10 +52,10 @@
 //       this.categorieService.getSubCategoriesByCategoryId(categoryId).subscribe({
 //         next: (subCategories) => {
 //           this.subCategories = subCategories || [];
-//           console.log(`Sous-catégories chargées pour categorieId=${categoryId}:`, this.subCategories);
+//           console.log(Sous-catégories chargées pour categorieId=${categoryId}:, this.subCategories);
 //         },
 //         error: (err) => {
-//           console.error(`Erreur lors du chargement des sous-catégories pour categorieId=${categoryId}:`, err);
+//           console.error(Erreur lors du chargement des sous-catégories pour categorieId=${categoryId}:, err);
 //           this.subCategories = [];
 //         }
 //       });
@@ -68,7 +68,7 @@
 //   }
 //
 //   navigateToCategory(categoryId: string, subCategory?: string): void {
-//     const route = subCategory ? `/category/${categoryId}/${subCategory.toLowerCase()}` : `/category/${categoryId}`;
+//     const route = subCategory ? /category/${categoryId}/${subCategory.toLowerCase()} : /category/${categoryId};
 //     this.router.navigate([route]);
 //   }
 //
@@ -94,7 +94,6 @@ import {SubCategoryService} from "../../../Services/sub-category.service";
 import {Observable} from "rxjs";
 import {SubCategory} from "../../../Models/SubCategory"; // Importer le service
 // import { Categorieng } from '../../Models/Categorie'; // Importer l'interface
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -109,8 +108,10 @@ export class NavbarComponent implements OnInit {
   currentCategoryId: string | null = null;
   isDropdownOpen: boolean = false;
   isLogin : boolean = false;
+  isRegister : boolean = false;
   isAccount : boolean = false;
   isDashboard: boolean = false;
+  // isDashboard : boolean= false;
   @ViewChild('categoryList', { static: false }) categoryList!: ElementRef;
 
   constructor(
@@ -123,8 +124,12 @@ export class NavbarComponent implements OnInit {
   ) {
     this.location = location;
     this.router.events.subscribe(() => {
-      this.isLogin = this.router.url.includes('login')
+      this.isLogin = this.router.url.includes('/login')
       console.log(this.isLogin);
+    })
+    this.router.events.subscribe(() => {
+      this.isRegister = this.router.url.includes('/register');
+      console.log(this.isRegister);
     })
     this.router.events.subscribe(() => {
       this.isDashboard = this.router.url.includes('dashboard');
