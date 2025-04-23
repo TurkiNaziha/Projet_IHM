@@ -6,31 +6,26 @@ import { Article } from 'src/Models/Article';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAnnonceComponent } from 'src/app/components/modal-annonce/modal-annonce.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { CommonModule } from '@angular/common';
 import { catchError, forkJoin, of } from 'rxjs';
 import { ViewAnnonceDialogComponent } from '../view/view-annonce-dialog';
 import { DeleteConfirmationDialogComponent } from '../delete/delete-confirmation-dialog';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-annonce-list',
   templateUrl: './icons.component.html',
   styleUrls: ['./icons.component.scss'],
-
-  // imports: [
-  //   MatButtonModule,
-  //   MatTableModule,
-  //   CommonModule
-  // ]
 })
 export class AnnonceListComponent implements OnInit {
   annonces: Annonce[] = [];
   vendeurs: { [key: number]: Vendeur } = {};
   articles: { [key: number]: Article } = {};
   dataSource = new MatTableDataSource<Annonce>();
-  displayedColumns: string[] = ['id', 'article', 'vendeur', 'duree', 'statut', 'dateDebut', 'dateFin', 'actions'];
+  filteredDataSource = new MatTableDataSource<Annonce>();
+  displayedColumns: string[] = ['id', 'image', 'article', 'vendeur', 'duree', 'statut', 'dateDebut', 'dateFin', 'actions'];
   isLoading: boolean = true;
+  sortOrder: string = 'newest';
+  statusFilter: string = '';
 
   constructor(
     private annonceService: AnnonceService,
@@ -49,7 +44,6 @@ export class AnnonceListComponent implements OnInit {
         this.annonces = annonces;
         this.dataSource.data = annonces;
 
-        // Create arrays of observables for fetching vendeurs and articles
         const vendeurRequests = annonces.map(annonce =>
           this.annonceService.getVendeur(annonce.vendeurId).pipe(
             catchError(err => {
@@ -67,7 +61,6 @@ export class AnnonceListComponent implements OnInit {
           )
         );
 
-        // Use forkJoin to wait for all requests to complete
         forkJoin([...vendeurRequests, ...articleRequests]).subscribe({
           next: (responses) => {
             const vendeurResponses = responses.slice(0, annonces.length);
@@ -86,10 +79,22 @@ export class AnnonceListComponent implements OnInit {
                 this.articles[annonce.articleId] = article as Article;
               } else {
                 console.warn(`Article ${annonce.articleId} non trouvé`);
-                this.articles[annonce.articleId] = { id: annonce.articleId, nom: 'Inconnu', description: '', categorieId: '', prixInitial: 0, vendeurId: 0, sousCategorieId: '', marque: '', etat: '' };
+                this.articles[annonce.articleId] = { 
+                  id: annonce.articleId, 
+                  nom: 'Inconnu', 
+                  description: '', 
+                  categorieId: '', 
+                  prixInitial: 0, 
+                  vendeurId: 0, 
+                  sousCategorieId: '', 
+                  marque: '', 
+                  etat: '',
+                  // image: ''
+                };
               }
             });
 
+            this.applyFilters();
             this.isLoading = false;
             this.cdr.detectChanges();
           },
@@ -108,18 +113,29 @@ export class AnnonceListComponent implements OnInit {
     });
   }
 
-  // openAddModal(): void {
-  //   const dialogRef = this.dialog.open(ModalAnnonceComponent, {
-  //     width: '500px',
-  //     maxHeight: '80vh'
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-  //       this.loadAnnonces();
-  //     }
-  //   });
-  // }
+  applyFilters(): void {
+    let filteredData = [...this.annonces];
+
+    // Apply status filter
+    if (this.statusFilter) {
+      filteredData = filteredData.filter(annonce => annonce.statut === this.statusFilter);
+    }
+
+    // Apply sort order
+    filteredData.sort((a, b) => {
+      const dateA = new Date(a.dateDebut).getTime();
+      const dateB = new Date(b.dateDebut).getTime();
+      return this.sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
+    });
+
+    this.filteredDataSource.data = filteredData;
+    this.cdr.detectChanges();
+  }
+
+  setStatusFilter(status: string): void {
+    this.statusFilter = status;
+    this.applyFilters();
+  }
 
   viewAnnonce(annonce: Annonce): void {
     const article = this.articles[annonce.articleId];
@@ -160,8 +176,7 @@ export class AnnonceListComponent implements OnInit {
     });
   }
 
-
-  openAddModal():void {
+  openAddModal(): void {
     const dialogRef = this.dialog.open(ModalAnnonceComponent, {
       width: '500px',
       maxHeight: '80vh'
@@ -172,6 +187,9 @@ export class AnnonceListComponent implements OnInit {
         this.loadAnnonces();
       }
     });
+  }
 
+  handleImageError(event: Event): void {
+    (event.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1694034206248-12153fd67e27?w=800&auto=format&fit=crop&q=60';
   }
 }

@@ -2,357 +2,136 @@
   "categories": [
     {
       "id": "1",
-      "name": "Meubles",
-      "taux": 0.1
-    },
-    {
-      "id": "121",
-      "name": "Electronics"
+      "name": "Meubles"
     },
     {
       "id": "2",
-      "name": "Fashion"
+      "name": "Electronics"
     },
     {
       "id": "3",
-      "name": "Collectibles"
+      "name": "Fashion"
     },
     {
       "id": "4",
-      "name": "Sports Equipment"
+      "name": "Collectibles"
     },
     {
       "id": "5",
-      "name": "sport"
+      "name": "Sports Equipment"
+    }
+  ],
+  "sousCategories": [
+    {
+      "id": "SC01",
+      "name": "Smartphones",
+      "categoryId": "2"
+    },
+    {
+      "id": "SC02",
+      "name": "PCs",
+      "categoryId": "2"
+    },
+    {
+      "id": "SC03",
+      "name": "Tables",
+      "categoryId": "1"
+    },
+    {
+      "id": "SC04",
+      "name": "Chaises",
+      "categoryId": "1"
+    },
+    {
+      "id": "SC05",
+      "name": "Golf Equipment",
+      "categoryId": "5"
+    }
+  ],
+  "vendeurs": [
+    {
+      "id": "101",
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "email": "jean.dupont@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "102",
+      "nom": "Martin",
+      "prenom": "Sophie",
+      "email": "sophie.martin@example.com",
+      "password": "password456"
     }
   ],
   "annonces": [
     {
-      "id": "1",
-      "titre": "Vente de Chaise Vintage",
-      "statut": "en cours",
-      "vandeurId": 1,
-      "dateDebut": "2025-03-31",
-      "dateFin": "2025-04-10",
-      "publie": true,
-      "acheteurId": null,
-      "articleId": 1
-    },
-    {
-      "id": 0,
+      "id": "2",
       "duree": 2,
-      "statut": "test",
-      "dateDebut": "2025-04-09",
-      "dateFin": "2025-04-02",
-      "articleId": 0,
-      "vendeurId": 101
-    },
-    {
-      "id": 0,
-      "duree": 1,
-      "statut": "done",
-      "dateDebut": "2025-04-12",
-      "dateFin": "2025-04-08",
-      "articleId": 0,
-      "vendeurId": 101
-    },
-    {
-      "id": 0,
-      "duree": 4,
-      "statut": "done",
-      "dateDebut": "2025-04-05",
+      "statut": "Actif",
+      "dateDebut": "2025-04-22",
       "dateFin": "2025-04-24",
-      "articleId": 0,
-      "vendeurId": 101
+      "articleId": "3",
+      "vendeurId": "101"
+    },
+    {
+      "id": "3",
+      "duree": 2,
+      "statut": "En attente",
+      "dateDebut": "2025-04-22",
+      "dateFin": "2025-04-24",
+      "articleId": "4",
+      "vendeurId": "101"
     }
   ],
   "articles": [
     {
       "id": "1",
-      "nom": "Chaise Vintage",
-      "description": "Chaise en bois vintage, bon état",
-      "categorieId": 1,
-      "prixInitial": 50,
-      "vendeurId": 1,
-      "sousCategorie": 1,
-      "marque": "Ancienne",
-      "etat": "bon",
-      "image": null
-    },
-    {
-      "id": 0,
-      "nom": "12",
-      "description": "12",
-      "categorieId": "121",
-      "sousCategorieId": "3",
-      "prixInitial": 2,
-      "marque": "test",
-      "etat": "test",
-      "vendeurId": 101
-    },
-    {
-      "id": 0,
-      "nom": "55",
-      "description": "5",
-      "categorieId": "4",
-      "sousCategorieId": "SC21",
-      "prixInitial": 3,
-      "marque": "test",
-      "etat": "44",
-      "vendeurId": 101
-    },
-    {
-      "id": 0,
-      "nom": "test",
-      "description": "test",
-      "categorieId": "4",
-      "sousCategorieId": "SC21",
-      "prixInitial": 11,
-      "marque": "test",
-      "etat": "4",
-      "vendeurId": 101
-    }
-  ],
-  "sousCategories": [
-    {
-      "id": "SC07",
-      "name": "Tables",
-      "categorieId": "1"
-    },
-    {
-      "id": "SC08",
-      "name": "Chaises",
-      "categorieId": "1"
-    },
-    {
-      "id": "SC09",
-      "name": "Canapés",
-      "categorieId": "1"
-    },
-    {
-      "id": "SC10",
-      "name": "Lits",
-      "categorieId": "1"
+      "nom": "Table Vintage",
+      "description": "Une table en bois massif vintage",
+      "categoryId": "1",
+      "prixInitial": 200,
+      "vendeurId": "101",
+      "sousCategorieId": "SC03",
+      "marque": "Artisan",
+      "etat": "Bon",
+      "image": "https://res.cloudinary.com/dyzh0aong/image/upload/v1743425054/pexels-garrettmorrow-682933_mfsnri.jpg"
     },
     {
       "id": "2",
-      "name": "Smartphones",
-      "categorieId": "121"
+      "nom": "Clubs de Golf",
+      "description": "Set de clubs de golf premium",
+      "categoryId": "5",
+      "prixInitial": 150,
+      "vendeurId": "102",
+      "sousCategorieId": "SC05",
+      "marque": "Callaway",
+      "etat": "Excellent",
+      "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&auto=format&fit=crop&q=60"
     },
     {
       "id": "3",
-      "name": "PC",
-      "categorieId": "121"
+      "nom": "Chaise Moderne",
+      "description": "Chaise ergonomique moderne",
+      "categoryId": "1",
+      "sousCategorieId": "SC04",
+      "prixInitial": 55,
+      "marque": "Ikea",
+      "etat": "Neuf",
+      "image": "https://images.unsplash.com/photo-1663855708502-d490333a02e6?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "vendeurId": "101"
     },
     {
-      "id": "SC11",
-      "name": "Téléviseurs",
-      "categorieId": "121"
-    },
-    {
-      "id": "SC12",
-      "name": "Accessoires Tech",
-      "categorieId": "121"
-    },
-    {
-      "id": "1",
-      "name": "Vêtements",
-      "categorieId": "2"
-    },
-    {
-      "id": "SC13",
-      "name": "Chaussures",
-      "categorieId": "2"
-    },
-    {
-      "id": "SC14",
-      "name": "Sacs",
-      "categorieId": "2"
-    },
-    {
-      "id": "SC15",
-      "name": "Accessoires",
-      "categorieId": "2"
-    },
-    {
-      "id": "SC16",
-      "name": "Pièces de monnaie",
-      "categorieId": "3"
-    },
-    {
-      "id": "SC17",
-      "name": "Timbres",
-      "categorieId": "3"
-    },
-    {
-      "id": "SC18",
-      "name": "Figurines",
-      "categorieId": "3"
-    },
-    {
-      "id": "SC19",
-      "name": "Art",
-      "categorieId": "3"
-    },
-    {
-      "id": "SC20",
-      "name": "Équipement de fitness",
-      "categorieId": "4"
-    },
-    {
-      "id": "SC21",
-      "name": "Vélos",
-      "categorieId": "4"
-    },
-    {
-      "id": "SC22",
-      "name": "Accessoires de sport",
-      "categorieId": "4"
-    },
-    {
-      "id": "SC23",
-      "name": "Vêtements de sport",
-      "categorieId": "4"
-    },
-    {
-      "id": "SC24",
-      "name": "Football",
-      "categorieId": "5"
-    },
-    {
-      "id": "SC25",
-      "name": "Basketball",
-      "categorieId": "5"
-    },
-    {
-      "id": "SC26",
-      "name": "Tennis",
-      "categorieId": "5"
-    },
-    {
-      "id": "SC27",
-      "name": "Natation",
-      "categorieId": "5"
-    },
-    {
-      "id": "SC07",
-      "name": "Tables",
-      "categorieId": "1"
-    },
-    {
-      "id": "SC08",
-      "name": "Chaises",
-      "categorieId": "1"
-    },
-    {
-      "id": "SC09",
-      "name": "Canapés",
-      "categorieId": "1"
-    },
-    {
-      "id": "SC10",
-      "name": "Lits",
-      "categorieId": "1"
-    },
-    {
-      "id": "2",
-      "name": "Smartphones",
-      "categorieId": "121"
-    },
-    {
-      "id": "3",
-      "name": "PC",
-      "categorieId": "121"
-    },
-    {
-      "id": "SC11",
-      "name": "Téléviseurs",
-      "categorieId": "121"
-    },
-    {
-      "id": "SC12",
-      "name": "Accessoires Tech",
-      "categorieId": "121"
-    },
-    {
-      "id": "1",
-      "name": "Vêtements",
-      "categorieId": "2"
-    },
-    {
-      "id": "SC13",
-      "name": "Chaussures",
-      "categorieId": "2"
-    },
-    {
-      "id": "SC14",
-      "name": "Sacs",
-      "categorieId": "2"
-    },
-    {
-      "id": "SC15",
-      "name": "Accessoires",
-      "categorieId": "2"
-    },
-    {
-      "id": "SC16",
-      "name": "Pièces de monnaie",
-      "categorieId": "3"
-    },
-    {
-      "id": "SC17",
-      "name": "Timbres",
-      "categorieId": "3"
-    },
-    {
-      "id": "SC18",
-      "name": "Figurines",
-      "categorieId": "3"
-    },
-    {
-      "id": "SC19",
-      "name": "Art",
-      "categorieId": "3"
-    },
-    {
-      "id": "SC20",
-      "name": "Équipement de fitness",
-      "categorieId": "4"
-    },
-    {
-      "id": "SC21",
-      "name": "Vélos",
-      "categorieId": "4"
-    },
-    {
-      "id": "SC22",
-      "name": "Accessoires de sport",
-      "categorieId": "4"
-    },
-    {
-      "id": "SC23",
-      "name": "Vêtements de sport",
-      "categorieId": "4"
-    },
-    {
-      "id": "SC24",
-      "name": "Football",
-      "categorieId": "5"
-    },
-    {
-      "id": "SC25",
-      "name": "Basketball",
-      "categorieId": "5"
-    },
-    {
-      "id": "SC26",
-      "name": "Tennis",
-      "categorieId": "5"
-    },
-    {
-      "id": "SC27",
-      "name": "Natation",
-      "categorieId": "5"
+      "id": "4",
+      "nom": "Smartphone",
+      "description": "Smartphone dernier modèle",
+      "categoryId": "2",
+      "sousCategorieId": "SC01",
+      "prixInitial": 500,
+      "marque": "Samsung",
+      "etat": "Neuf",
+      "image": "https://images.unsplash.com/photo-1714571767860-5f0e90f4277b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "vendeurId": "101"
     }
   ]
 }

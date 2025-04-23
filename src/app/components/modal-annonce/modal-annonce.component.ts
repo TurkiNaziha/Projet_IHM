@@ -19,7 +19,7 @@ import { Article } from 'src/Models/Article';
 
 @Component({
   selector: 'app-modal-annonce',
-  // templateUrl: './modal-annonce.component.html',
+
   templateUrl: './modal-annonce.component.html',
   styleUrls: ['./modal-annonce.component.scss'],
   standalone: true,
@@ -94,6 +94,22 @@ export class ModalAnnonceComponent implements OnInit {
       this.filterSousCategories(categorieId);
     });
   }
+
+
+  previewUrl: string | ArrayBuffer | null = null;
+
+onImageSelected(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  if (input.files && input.files.length > 0) {
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.previewUrl = reader.result;
+    };
+    reader.readAsDataURL(file);
+    // Save the file if needed: this.articleForm.patchValue({ image: file });
+  }
+}
 
   loadCategories(): void {
     this.isLoading = true;
@@ -288,3 +304,4 @@ export class ModalAnnonceComponent implements OnInit {
 //   onCancel(): void {
 //     this.dialogRef.close(false);
 //   }
+// }

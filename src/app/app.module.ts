@@ -22,9 +22,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 
-
+import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { IconsComponent } from './pages/icons/icons.component';
+
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     MatIconModule,
     MatTooltipModule,
-    AppRoutingModule
+    AppRoutingModule,  CommonModule,
+    FormsModule
 
   ],
   declarations: [

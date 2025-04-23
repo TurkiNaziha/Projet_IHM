@@ -1,92 +1,117 @@
 .dialog-content {
   display: flex;
   flex-direction: column;
-  max-height: 80vh; /* Constrain modal height to 80% of viewport height */
-  padding-bottom: 0;
+  width: 100%;
+  max-width: 800px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  padding: 24px;
 }
 
 .dialog-title {
-  color: #5e72e4;
-  margin: 0 0 10px 0;
-  font-size: 1.4rem;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section-title {
+  color: #34495e;
+  margin: 0 0 12px 0;
+  font-size: 1.2rem;
   font-weight: 500;
-}
-
-.form-scrollable {
-  flex: 1;
-  overflow-y: auto; /* Make the form content scrollable */
-  padding-right: 10px; /* Add padding to avoid scrollbar overlap */
-}
-
-.form-scrollable::-webkit-scrollbar {
-  width: 6px;
-}
-
-.form-scrollable::-webkit-scrollbar-thumb {
-  background-color: #5e72e4;
-  border-radius: 3px;
-}
-
-.form-scrollable::-webkit-scrollbar-track {
-  background-color: #f5f5f5;
-}
-
-h5 {
-  color: #333;
-  margin: 10px 0 5px;
-  font-size: 1.1rem;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e8ecef;
 }
 
 .category-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
-.category-form mat-form-field {
+.form-row {
+  display: flex;
+  gap: 20px;
   width: 100%;
-  font-size: 14px;
+  align-items: flex-start;
 }
 
-.category-form ::ng-deep .mat-form-field-wrapper {
-  padding-bottom: 0;
+.form-field {
+  flex: 1 1 calc(50% - 10px);
+  min-width: 0;
 }
 
-.category-form ::ng-deep .mat-form-field-flex {
-  background-color: #f5f5f5;
-  border-radius: 4px;
-  padding: 8px;
+.full-width {
+  flex: 1 1 100%;
 }
 
-.category-form ::ng-deep .mat-form-field-label {
-  color: #333;
-}
-
-.category-form ::ng-deep .mat-form-field-underline {
-  background-color: #5e72e4;
+.mat-form-field {
+  width: 100%;
 }
 
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  padding: 10px 0;
-  border-top: 1px solid #e0e0e0; /* Add a separator above the buttons */
-  background-color: #fff; /* Ensure the buttons area has a white background */
-  position: sticky;
-  bottom: 0;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e8ecef;
 }
 
-.form-actions button {
-  min-width: 100px;
+.action-btn {
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-.form-actions [mat-stroked-button] {
-  border-color: #dc3545;
-  color: #dc3545;
+.cancel-btn {
+  color: #6b7280;
+  border: 1px solid #d1d5db;
 }
 
-.form-actions [mat-raised-button] {
-  background-color: #17a2b8;
-  color: #fff;
+.submit-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #2563eb;
+}
+
+.submit-btn:disabled {
+  background-color: #d1d5db;
+  color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .form-field {
+    flex: 1 1 100%;
+  }
+  
+  .dialog-content {
+    padding: 16px;
+  }
+  .navbar-nav .dropdown-menu {
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+  }
 }

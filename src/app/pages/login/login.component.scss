@@ -1,0 +1,144 @@
+/* Header Section */
+.header {
+    background: linear-gradient(90deg, #f5f5e8 0%, #e8e5c6 100%); /* Beige gradient */
+    padding-top: 7rem;
+    padding-bottom: 8rem;
+    position: relative;
+  }
+  
+  /* Separator */
+  .separator .fill-default {
+    fill: #f4f4ed; /* Light beige for the separator */
+  }
+  
+  /* Card Styling */
+  .card {
+    background-color: #f4f4ed !important; /* Light beige background */
+    border: none !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important; /* Subtle shadow */
+  }
+  
+  .card-header {
+    background-color: transparent !important;
+    border-bottom: none !important;
+  }
+  
+  .card-body {
+    background-color: #f4f4ed; /* Light beige to match the card */
+  }
+  
+  /* Form Elements */
+  .form-group .input-group {
+    background-color: #fff; /* White background for inputs */
+    border: 1px solid #e8e5c6; /* Beige border */
+    border-radius: 5px;
+  }
+  
+  .form-group .input-group-text {
+    background-color: #f5f5e8; /* Light beige for the icon area */
+    border: none;
+    color: #5c554b; /* Dark beige for icons */
+  }
+  
+  .form-group .form-control {
+    background-color: #fff;
+    border: none;
+    color: #5c554b; /* Dark beige for text */
+  }
+  
+  .form-group .form-control::placeholder {
+    color: #8b877a; /* Muted beige for placeholder */
+  }
+  
+  /* Checkbox */
+  .custom-checkbox .custom-control-label {
+    color: #5c554b; /* Dark beige for text */
+  }
+  
+  .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #e8e5c6; /* Beige when checked */
+    border-color: #e8e5c6;
+  }
+  
+  /* Sign-in Button */
+  .btn-primary {
+    background-color: #e8e5c6 !important; /* Beige button */
+    border: none !important;
+    color: #5c554b !important; /* Dark beige text */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #d8d5b6 !important; /* Slightly darker beige on hover */
+  }
+  
+  /* GitHub and Google Buttons */
+  .btn-neutral {
+    background-color: #f5f5e8 !important; /* Light beige background */
+    border: 1px solid #e8e5c6 !important; /* Beige border */
+    color: #5c554b !important; /* Dark beige text */
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-neutral:hover {
+    background-color: #e8e5c6 !important; /* Slightly darker beige on hover */
+  }
+  
+  .btn-inner--text {
+    color: #5c554b; /* Dark beige for button text */
+  }
+  
+  /* Text and Links */
+  .header-body h1 {
+    color: #5c554b !important; /* Dark beige for readability */
+    font-weight: bold;
+  }
+  
+  .header-body p {
+    color: #8b877a !important; /* Muted beige for text */
+  }
+  
+  .text-muted {
+    color: #8b877a !important; /* Muted beige */
+  }
+  
+  .text-light {
+    color: #5c554b !important; /* Dark beige for links */
+  }
+  
+  .text-light:hover {
+    color: #d8d5b6 !important; /* Slightly lighter beige on hover */
+  }
+  
+  /* General Container Adjustments */
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .header {
+        padding-top: 5rem;
+        padding-bottom: 6rem;
+    }
+  
+    .header-body h1 {
+        font-size: 2rem;
+    }
+  
+    .header-body p {
+        font-size: 1rem;
+    }
+  
+    .card-body {
+        padding: 1.5rem !important;
+    }
+  
+    .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+  }
