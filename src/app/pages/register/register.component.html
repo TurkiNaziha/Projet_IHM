@@ -1,85 +1,239 @@
-<div class="header bg-gradient-danger py-7 py-lg-8">
-  <div class="container">
-    <div class="header-body text-center mb-7">
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-6">
-          <h1 class="text-white">Welcome!</h1>
-          <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Page</title>
+  <style>
+    /* Header Section */
+    .header {
+      background: linear-gradient(90deg, #F5F9FF 0%, #FFFFFF 100%); /* Light blue to white gradient */
+      padding-top: 7rem;
+      padding-bottom: 8rem;
+      position: relative;
+    }
+
+    /* Separator */
+    .separator .fill-default {
+      fill: #4A90E2; /* Soft blue for the separator */
+    }
+
+    /* Card Styling */
+    .card {
+      background-color: #FFFFFF !important; /* Pure white background */
+      border: none !important;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important; /* Subtle shadow */
+    }
+
+    .card-header {
+      background-color: transparent !important;
+      border-bottom: none !important;
+    }
+
+    .card-body {
+      background-color: #FFFFFF; /* Match card background */
+    }
+
+    /* Form Elements */
+    .form-group .input-group {
+      background-color: #F5F9FF; /* Very light blue for inputs */
+      border: 1px solid #4A90E2; /* Soft blue border */
+      border-radius: 5px;
+    }
+
+    .form-group .input-group-text {
+      background-color: #F5F9FF; /* Match input background */
+      border: none;
+      color: #2E3A59; /* Dark blue-gray for icons */
+    }
+
+    .form-group .form-control,
+    .form-group select {
+      background-color: #F5F9FF; /* Very light blue background */
+      border: none;
+      color: #2E3A59; /* Dark blue-gray for text */
+    }
+
+    .form-group .form-control::placeholder,
+    .form-group select option[disabled] {
+      color: #6B7280; /* Lighter gray-blue for placeholder */
+    }
+
+    .form-group label {
+      color: #2E3A59; /* Dark blue-gray for labels */
+    }
+
+    .form-group small.text-danger {
+      color: #E57373 !important; /* Soft red for error messages */
+    }
+
+    /* Sign-up Button */
+    .btn-primary {
+      background-color: #4A90E2 !important; /* Soft blue button */
+      border: none !important;
+      color: #FFFFFF !important; /* White text */
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #3A78C2 !important; /* Slightly darker blue on hover */
+    }
+
+    /* GitHub and Google Buttons */
+    .btn-neutral {
+      background-color: #F5F9FF !important; /* Very light blue background */
+      border: 1px solid #4A90E2 !important; /* Soft blue border */
+      color: #2E3A59 !important; /* Dark blue-gray text */
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-neutral:hover {
+      background-color: #EAF2FF !important; /* Slightly darker blue on hover */
+    }
+
+    .btn-inner--text {
+      color: #2E3A59; /* Dark blue-gray for button text */
+    }
+
+    /* Text and Links */
+    .header-body h1 {
+      color: #2E3A59 !important; /* Dark blue-gray for readability */
+      font-weight: bold;
+    }
+
+    .header-body p {
+      color: #6B7280 !important; /* Lighter gray-blue for text */
+    }
+
+    .text-muted {
+      color: #6B7280 !important; /* Lighter gray-blue for muted text */
+    }
+
+    /* Error Message */
+    .alert-danger {
+      background-color: #FFEBEE; /* Light red background for errors */
+      color: #E57373; /* Soft red text for errors */
+      border-color: #FFCDD2;
+    }
+
+    /* General Container Adjustments */
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .header {
+        padding-top: 5rem;
+        padding-bottom: 6rem;
+      }
+
+      .header-body h1 {
+        font-size: 2rem;
+      }
+
+      .header-body p {
+        font-size: 1rem;
+      }
+
+      .card-body {
+        padding: 1.5rem !important;
+      }
+
+      .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header py-7 py-lg-8">
+    <div class="container">
+      <div class="header-body text-center mb-7">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-6">
+            <h1 class="text-white">Welcome!</h1>
+            <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+          </div>
         </div>
       </div>
     </div>
+    <div class="separator separator-bottom separator-skew zindex-100">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
   </div>
-  <div class="separator separator-bottom separator-skew zindex-100">
-    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-    </svg>
-  </div>
-</div>
-<!-- Page content -->
-<div class="container mt--8 pb-5">
-  <!-- Table -->
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8">
-      <div class="card bg-secondary shadow border-0">
-        <div class="card-header bg-transparent pb-5">
-          <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
-          <div class="text-center">
-            <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
-              <span class="btn-inner--icon"><img src="assets/img/icons/common/github.svg"></span>
-              <span class="btn-inner--text">Github</span>
-            </a>
-            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
-              <span class="btn-inner--icon"><img src="assets/img/icons/common/google.svg"></span>
-              <span class="btn-inner--text">Google</span>
-            </a>
-          </div>
-        </div>
-        <div class="card-body px-lg-5 py-lg-5">
-          <div class="text-center text-muted mb-4">
-            <small>Or sign up with credentials</small>
-          </div>
-          <form role="form">
-            <div class="form-group">
-              <div class="input-group input-group-alternative mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
-                </div>
-                <input class="form-control" placeholder="Name" type="text">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group input-group-alternative mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                </div>
-                <input class="form-control" placeholder="Email" type="email">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group input-group-alternative">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                </div>
-                <input class="form-control" placeholder="Password" type="password">
-              </div>
-            </div>
-            <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
-            <div class="row my-4">
-              <div class="col-12">
-                <div class="custom-control custom-control-alternative custom-checkbox">
-                  <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                  <label class="custom-control-label" for="customCheckRegister">
-                    <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                  </label>
-                </div>
-              </div>
-            </div>
+  <!-- Page content -->
+  <div class="container mt--8 pb-5">
+    <!-- Table -->
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-transparent pb-5">
+            <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
             <div class="text-center">
-              <button type="button" class="btn btn-primary mt-4">Create account</button>
+              <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
+                <span class="btn-inner--icon"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" height="20" alt="GitHub"></span>
+                <span class="btn-inner--text">Github</span>
+              </a>
+              <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+                <span class="btn-inner--icon"><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" width="20" height="20" alt="Google"></span>
+                <span class="btn-inner--text">Google</span>
+              </a>
             </div>
-          </form>
+          </div>
+          <div class="card-body px-lg-5 py-lg-5">
+            <div class="text-center text-muted mb-4">
+              <small>Or sign up with credentials</small>
+            </div>
+            <div>
+              <div class="form-group">
+                <label>Nom <span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Nom" type="text" name="nom" required>
+                <small class="text-danger" style="display: none;">Le nom est requis.</small>
+              </div>
+              <div class="form-group">
+                <label>Prénom <span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Prénom" type="text" name="prenom" required>
+                <small class="text-danger" style="display: none;">Le prénom est requis.</small>
+              </div>
+              <div class="form-group">
+                <label>Email <span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Email" type="email" name="email" required>
+                <small class="text-danger" style="display: none;">Un email valide est requis.</small>
+              </div>
+              <div class="form-group">
+                <label>Téléphone <span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Téléphone" type="text" name="telephone" required pattern="^[0-9]{8,15}$">
+                <small class="text-danger" style="display: none;">Le téléphone est requis (8 à 15 chiffres).</small>
+              </div>
+              <div class="form-group">
+                <label>Mot de passe <span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Mot de passe" type="password" name="password" required minlength="6">
+                <small class="text-danger" style="display: none;">Mot de passe d'au moins 6 caractères requis.</small>
+              </div>
+              <div class="form-group">
+                <label>Rôle <span class="text-danger">*</span></label>
+                <select class="form-control" name="role" required>
+                  <option value="" disabled selected>Choisir un rôle</option>
+                  <option value="vendeur">Vendeur</option>
+                  <option value="acheteur">Acheteur</option>
+                </select>
+                <small class="text-danger" style="display: none;">Le rôle est requis.</small>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary mt-4">Créer un compte</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</body>
+</html>

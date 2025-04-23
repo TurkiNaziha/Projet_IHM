@@ -2,74 +2,102 @@
   <h3 class="dialog-title">Ajouter une Annonce</h3>
   <div class="form-scrollable">
     <form [formGroup]="articleForm" class="category-form">
-      <h5>Détails de l'Article</h5>
-      <mat-form-field appearance="fill">
-        <mat-label>Nom</mat-label>
-        <input matInput formControlName="nom" required>
-        <mat-error *ngIf="articleForm.get('nom')?.invalid && articleForm.get('nom')?.touched">
-          Nom obligatoire
-        </mat-error>
-      </mat-form-field>
+      <h5 class="section-title">Détails de l'Article</h5>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description" required></textarea>
-        <mat-error *ngIf="articleForm.get('description')?.invalid && articleForm.get('description')?.touched">
-          Description obligatoire
-        </mat-error>
-      </mat-form-field>
+      <!-- Nom & Description -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="nom" required>
+          <mat-error *ngIf="articleForm.get('nom')?.invalid && articleForm.get('nom')?.touched">
+            Nom obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" required rows="3"></textarea>
+          <mat-error *ngIf="articleForm.get('description')?.invalid && articleForm.get('description')?.touched">
+            Description obligatoire
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Catégorie</mat-label>
-        <mat-select formControlName="categorieId" required>
-          <mat-option *ngIf="isLoading" disabled>Chargement...</mat-option>
-          <mat-option *ngIf="!isLoading && categories.length === 0" disabled>Aucune catégorie</mat-option>
-          <mat-option *ngFor="let category of categories" [value]="category.id">
-            {{ category.id }} - {{ category.name }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="articleForm.get('categorieId')?.invalid && articleForm.get('categorieId')?.touched">
-          Catégorie obligatoire
-        </mat-error>
-      </mat-form-field>
+      <!-- Catégorie -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Catégorie</mat-label>
+          <mat-select formControlName="categorieId" required>
+            <mat-option *ngIf="isLoading" disabled>Chargement...</mat-option>
+            <mat-option *ngIf="!isLoading && categories.length === 0" disabled>
+              Aucune catégorie
+            </mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+              {{ category.id }} - {{ category.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="articleForm.get('categorieId')?.invalid && articleForm.get('categorieId')?.touched">
+            Catégorie obligatoire
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Sous-Catégorie</mat-label>
-        <mat-select formControlName="sousCategorieId" required>
-          <mat-option *ngIf="isLoading" disabled>Chargement...</mat-option>
-          <mat-option *ngIf="!isLoading && filteredSousCategories.length === 0" disabled>Aucune sous-catégorie</mat-option>
-          <mat-option *ngFor="let sousCategory of filteredSousCategories" [value]="sousCategory.id">
-            {{ sousCategory.id }} - {{ sousCategory.name }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="articleForm.get('sousCategorieId')?.invalid && articleForm.get('sousCategorieId')?.touched">
-          Sous-catégorie obligatoire
-        </mat-error>
-      </mat-form-field>
+      <!-- Sous-Catégorie -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Sous-Catégorie</mat-label>
+          <mat-select formControlName="sousCategorieId" required>
+            <mat-option *ngIf="isLoading" disabled>Chargement...</mat-option>
+            <mat-option *ngIf="!isLoading && filteredSousCategories.length === 0" disabled>
+              Aucune sous-catégorie
+            </mat-option>
+            <mat-option *ngFor="let sousCategory of filteredSousCategories" [value]="sousCategory.id">
+              {{ sousCategory.id }} - {{ sousCategory.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="articleForm.get('sousCategorieId')?.invalid && articleForm.get('sousCategorieId')?.touched">
+            Sous-catégorie obligatoire
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Prix Initial</mat-label>
-        <input matInput type="number" formControlName="prixInitial" required>
-        <mat-error *ngIf="articleForm.get('prixInitial')?.invalid && articleForm.get('prixInitial')?.touched">
-          Prix initial obligatoire et doit être positif
-        </mat-error>
-      </mat-form-field>
+      <!-- Prix Initial & Marque -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Prix Initial</mat-label>
+          <input matInput type="number" formControlName="prixInitial" required>
+          <mat-error *ngIf="articleForm.get('prixInitial')?.invalid && articleForm.get('prixInitial')?.touched">
+            Prix initial obligatoire et doit être positif
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Marque</mat-label>
+          <input matInput formControlName="marque" required>
+          <mat-error *ngIf="articleForm.get('marque')?.invalid && articleForm.get('marque')?.touched">
+            Marque obligatoire
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Marque</mat-label>
-        <input matInput formControlName="marque" required>
-        <mat-error *ngIf="articleForm.get('marque')?.invalid && articleForm.get('marque')?.touched">
-          Marque obligatoire
-        </mat-error>
-      </mat-form-field>
+      <!-- État & Upload -->
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>État</mat-label>
+          <input matInput formControlName="etat" required>
+          <mat-error *ngIf="articleForm.get('etat')?.invalid && articleForm.get('etat')?.touched">
+            État obligatoire
+          </mat-error>
+        </mat-form-field>
+        <div class="form-field full-width file-upload">
+          <mat-label class="upload-label">Image</mat-label>
+          <input type="file" accept="image/*" (change)="onImageSelected($event)" class="upload-input" />
+        </div>
+      </div>
 
-      <mat-form-field appearance="fill">
-        <mat-label>État</mat-label>
-        <input matInput formControlName="etat" required>
-        <mat-error *ngIf="articleForm.get('etat')?.invalid && articleForm.get('etat')?.touched">
-          État obligatoire
-        </mat-error>
-      </mat-form-field>
+      <!-- Image preview -->
+      <div *ngIf="previewUrl" class="image-preview">
+        <p class="preview-title">Prévisualisation de l'image :</p>
+        <img [src]="previewUrl" alt="Prévisualisation de l'image" class="preview-img" />
+      </div>
     </form>
 
     <form [formGroup]="annonceForm" class="category-form">
@@ -81,7 +109,6 @@
           Durée obligatoire et doit être positive
         </mat-error>
       </mat-form-field>
-
       <mat-form-field appearance="fill">
         <mat-label>Statut</mat-label>
         <input matInput formControlName="statut" required>
@@ -89,7 +116,6 @@
           Statut obligatoire
         </mat-error>
       </mat-form-field>
-
       <mat-form-field appearance="fill">
         <mat-label>Date Début</mat-label>
         <input matInput type="date" formControlName="dateDebut" required>
@@ -97,7 +123,6 @@
           Date de début obligatoire
         </mat-error>
       </mat-form-field>
-
       <mat-form-field appearance="fill">
         <mat-label>Date Fin</mat-label>
         <input matInput type="date" formControlName="dateFin" required>
@@ -109,7 +134,7 @@
   </div>
 
   <div class="form-actions">
-    <button type="button" mat-stroked-button color="warn" (click)="onCancel()">Annuler</button>
-    <button type="button" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="annonceForm.invalid || articleForm.invalid">Add</button>
+    <button type="button" mat-stroked-button class="action-btn cancel-btn" (click)="onCancel()">Annuler</button>
+    <button type="button" mat-raised-button class="action-btn submit-btn" (click)="onSubmit()" [disabled]="annonceForm.invalid || articleForm.invalid">Ajouter</button>
   </div>
 </div>

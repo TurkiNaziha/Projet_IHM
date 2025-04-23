@@ -1,0 +1,152 @@
+/* Header Section */
+.header {
+  background: linear-gradient(90deg, #F5F9FF 0%, #FFFFFF 100%); /* Light blue to white gradient */
+  padding-top: 7rem;
+  padding-bottom: 8rem;
+  position: relative;
+}
+
+/* Separator */
+.separator .fill-default {
+  fill: #4A90E2; /* Soft blue for the separator */
+}
+
+/* Card Styling */
+.card {
+  background-color: #FFFFFF !important; /* Pure white background */
+  border: none !important;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important; /* Subtle shadow */
+}
+
+.card-header {
+  background-color: transparent !important;
+  border-bottom: none !important;
+}
+
+.card-body {
+  background-color: #FFFFFF; /* Match card background */
+}
+
+/* Form Elements */
+.form-group .input-group {
+  background-color: #F5F9FF; /* Very light blue for inputs */
+  border: 1px solid #4A90E2; /* Soft blue border */
+  border-radius: 5px;
+}
+
+.form-group .input-group-text {
+  background-color: #F5F9FF; /* Match input background */
+  border: none;
+  color: #2E3A59; /* Dark blue-gray for icons */
+}
+
+.form-group .form-control {
+  background-color: #F5F9FF; /* Very light blue background */
+  border: none;
+  color: #2E3A59; /* Dark blue-gray for text */
+}
+
+.form-group .form-control::placeholder {
+  color: #6B7280; /* Lighter gray-blue for placeholder */
+}
+
+/* Checkbox */
+.custom-checkbox .custom-control-label {
+  color: #2E3A59; /* Dark blue-gray for text */
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #4A90E2; /* Soft blue when checked */
+  border-color: #4A90E2;
+}
+
+/* Sign-in Button */
+.btn-primary {
+  background-color: #4A90E2 !important; /* Soft blue button */
+  border: none !important;
+  color: #FFFFFF !important; /* White text */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #3A78C2 !important; /* Slightly darker blue on hover */
+}
+
+/* GitHub and Google Buttons */
+.btn-neutral {
+  background-color: #F5F9FF !important; /* Very light blue background */
+  border: 1px solid #4A90E2 !important; /* Soft blue border */
+  color: #2E3A59 !important; /* Dark blue-gray text */
+  transition: background-color 0.3s ease;
+}
+
+.btn-neutral:hover {
+  background-color: #EAF2FF !important; /* Slightly darker blue on hover */
+}
+
+.btn-inner--text {
+  color: #2E3A59; /* Dark blue-gray for button text */
+}
+
+/* Text and Links */
+.header-body h1 {
+  color: #2E3A59 !important; /* Dark blue-gray for readability */
+  font-weight: bold;
+}
+
+.header-body p {
+  color: #6B7280 !important; /* Lighter gray-blue for text */
+}
+
+.text-muted {
+  color: #6B7280 !important; /* Lighter gray-blue for muted text */
+}
+
+.text-light {
+  color: #2E3A59 !important; /* Dark blue-gray for links */
+}
+
+.text-light:hover {
+  color: #4A90E2 !important; /* Soft blue on hover */
+}
+
+/* Error Message */
+.alert-danger {
+  background-color: #FFEBEE; /* Light red background for errors */
+  color: #E57373; /* Soft red text for errors */
+  border-color: #FFCDD2;
+}
+
+/* General Container Adjustments */
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .header {
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+  }
+
+  .header-body h1 {
+    font-size: 2rem;
+  }
+
+  
+  .header-body p {
+    font-size: 1rem;
+  }
+
+  .card-body {
+    padding: 1.5rem !important;
+  }
+
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pad">
   <div class="row align-items-center mb-4">
     <div class="col">
       <h1 class="d-inline-block mb-0">
@@ -8,78 +8,87 @@
     </div>
     <div class="col-auto">
       <button class="btn btn-info" (click)="openAddModal()">
-        Ajouter une Annonce
+        Add annonce
       </button>
     </div>
   </div>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table" *ngIf="!isLoading; else loadingTemplate">
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
+  <!-- Filter Controls -->
+  <div class="filter-controls mb-4">
+    <div class="filter-group">
+      <label for="sortOrder">Trier par :</label>
+      <select id="sortOrder" [(ngModel)]="sortOrder" (change)="applyFilters()">
+        <option value="newest">Plus récent</option>
+        <option value="oldest">Plus ancien</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Filtrer par statut :</label>
+      <button class="btn btn-filter" [ngClass]="{'active': statusFilter === ''}" (click)="setStatusFilter('')">Tous</button>
+      <button class="btn btn-filter" [ngClass]="{'active': statusFilter === 'Actif'}" (click)="setStatusFilter('Actif')">Actif</button>
+      <button class="btn btn-filter" [ngClass]="{'active': statusFilter === 'Terminé'}" (click)="setStatusFilter('Terminé')">Terminé</button>
+      <button class="btn btn-filter" [ngClass]="{'active': statusFilter === 'En attente'}" (click)="setStatusFilter('En attente')">En attente</button>
+    </div>
+  </div>
 
-    <!-- Article Column -->
-    <ng-container matColumnDef="article">
-      <th mat-header-cell *matHeaderCellDef>Article</th>
-      <td mat-cell *matCellDef="let element">{{ articles[element.articleId]?.nom || 'Non trouvé' }}</td>
-    </ng-container>
-
-    <!-- Vendeur Column -->
-    <ng-container matColumnDef="vendeur">
-      <th mat-header-cell *matHeaderCellDef>Vendeur</th>
-      <td mat-cell *matCellDef="let element">{{ (vendeurs[element.vendeurId]?.prenom || 'Inconnu') + ' ' + (vendeurs[element.vendeurId]?.nom || '') }}</td>
-    </ng-container>
-
-    <!-- Durée Column -->
-    <ng-container matColumnDef="duree">
-      <th mat-header-cell *matHeaderCellDef>Durée</th>
-      <td mat-cell *matCellDef="let element">{{ element.duree }}</td>
-    </ng-container>
-
-    <!-- Statut Column -->
-    <ng-container matColumnDef="statut">
-      <th mat-header-cell *matHeaderCellDef>Statut</th>
-      <td mat-cell *matCellDef="let element">{{ element.statut }}</td>
-    </ng-container>
-
-    <!-- Date Début Column -->
-    <ng-container matColumnDef="dateDebut">
-      <th mat-header-cell *matHeaderCellDef>Date Début</th>
-      <td mat-cell *matCellDef="let element">{{ element.dateDebut | date }}</td>
-    </ng-container>
-
-    <!-- Date Fin Column -->
-    <ng-container matColumnDef="dateFin">
-      <th mat-header-cell *matHeaderCellDef>Date Fin</th>
-      <td mat-cell *matCellDef="let element">{{ element.dateFin | date }}</td>
-    </ng-container>
-
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
-      <td mat-cell *matCellDef="let element">
-        <button class="btn btn-icon btn-success btn-sm" (click)="viewAnnonce(element)">
+  <!-- Card Grid -->
+  <div class="annonces-grid" *ngIf="!isLoading; else loadingTemplate">
+    <div class="annonce-card" *ngFor="let element of filteredDataSource.data">
+      <div class="card-image">
+        <img 
+          [src]="articles[element.articleId]?.image || 'https://images.unsplash.com/photo-1694034206248-12153fd67e27?w=800&auto=format&fit=crop&q=60'" 
+          alt="Article image" 
+          class="article-image" 
+          (error)="handleImageError($event)">
+        <span class="status-badge" [ngClass]="{
+          'status-active': element.statut === 'Actif',
+          'status-closed': element.statut === 'Terminé',
+          'status-pending': element.statut === 'En attente'
+        }">
+          {{ element.statut }}
+        </span>
+      </div>
+      <div class="card-header">
+        <h3 class="card-title">Annonce #{{ element.id }}</h3>
+      </div>
+      <div class="card-body">
+        <div class="info-row">
+          <span class="info-label">Article:</span>
+          <span class="info-value">{{ articles[element.articleId]?.nom || 'Non trouvé' }}</span>
+        </div>
+        <div class="info-row hidden-row">
+          <span class="info-label">Vendeur:</span>
+          <span class="info-value">{{ (vendeurs[element.vendeurId]?.prenom || 'Inconnu') + ' ' + (vendeurs[element.vendeurId]?.nom || '') }}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Durée:</span>
+          <span class="info-value">{{ element.duree }}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Date Début:</span>
+          <span class="info-value">{{ element.dateDebut | date }}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Date Fin:</span>
+          <span class="info-value">{{ element.dateFin | date }}</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-icon btn-view" (click)="viewAnnonce(element)" title="Voir">
           <mat-icon>visibility</mat-icon>
         </button>
-        <button class="btn btn-icon btn-primary btn-sm" (click)="editAnnonce(element)">
+        <button class="btn btn-icon btn-edit" (click)="editAnnonce(element)" title="Modifier">
           <mat-icon>edit</mat-icon>
         </button>
-        <button class="btn btn-icon btn-danger btn-sm" (click)="deleteAnnonce(element.id)">
+        <button class="btn btn-icon btn-delete" (click)="deleteAnnonce(element.id)" title="Supprimer">
           <mat-icon>delete</mat-icon>
         </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+      </div>
+    </div>
+  </div>
 
   <ng-template #loadingTemplate>
     <div class="loading">Chargement des données...</div>
   </ng-template>
 </div>
-<br>
-<br>
-<br>
+

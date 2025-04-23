@@ -19,7 +19,7 @@ import { Article } from 'src/Models/Article';
 
 @Component({
   selector: 'app-modal-annonce',
-  // templateUrl: './modal-annonce.component.html',
+
   templateUrl: './modal-annonce.component.html',
   styleUrls: ['./modal-annonce.component.scss'],
   standalone: true,
@@ -33,6 +33,8 @@ import { Article } from 'src/Models/Article';
   ]
 })
 export class ModalAnnonceComponent implements OnInit {
+
+  
   annonceForm: FormGroup;
   articleForm: FormGroup;
   categories: Categorieng[] = [];
@@ -94,6 +96,21 @@ export class ModalAnnonceComponent implements OnInit {
       this.filterSousCategories(categorieId);
     });
   }
+
+  previewUrl: string | ArrayBuffer | null = null;
+
+onImageSelected(event: any): void {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = e => this.previewUrl = reader.result;
+    reader.readAsDataURL(file);
+  }
+}
+
+
+
+
 
   loadCategories(): void {
     this.isLoading = true;
@@ -288,3 +305,4 @@ export class ModalAnnonceComponent implements OnInit {
 //   onCancel(): void {
 //     this.dialogRef.close(false);
 //   }
+// }
