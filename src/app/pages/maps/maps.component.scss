@@ -2,12 +2,16 @@
 
 .demo-table {
   width: 100%;
-  margin-top: 20px;
+  //margin-top: 20px;
+  margin: 30px !important;
+
 }
 
 .mat-header-cell {
   font-weight: bold;
   background-color: #f5f5f5;
+
+
 }
 
 .mat-row:nth-child(even) {
@@ -18,3 +22,88 @@
   background-color: #f0f0f0;
 }
 
+.custom-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-left: 30px !important;
+
+  //background: linear-gradient(45deg, var(--btn-bg-start), var(--btn-bg-end));
+  background: #B19470;
+  color: white;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+
+  /* Effet de survol */
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+
+  /* Effet de vague au survol */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  /* Taille réduite pour les petits boutons */
+  &.btn-sm {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background : #B19470;
+  }
+  &.btn-sm1 {
+    padding: 6px 15px;
+    font-size: 0.7rem;
+  }
+
+  /* Bouton en outline */
+  &.btn-outline-blue {
+    background: transparent;
+    border-color: #1a73e8;
+    color: #1a73e8;
+    background: none;
+
+    &:hover {
+      background: linear-gradient(45deg, #1a73e8, #4a90e2);
+      border-color: transparent;
+      color: white;
+    }
+  }
+
+  /* Bouton lien (pour les catégories) */
+  &.btn-link {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    color: #1a73e8;
+    text-transform: none;
+    letter-spacing: 0;
+
+    &:hover {
+      background: none;
+      box-shadow: none;
+      text-decoration: underline;
+    }
+  }
+}

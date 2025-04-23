@@ -109,6 +109,8 @@ export class NavbarComponent implements OnInit {
   currentCategoryId: string | null = null;
   isDropdownOpen: boolean = false;
   isLogin : boolean = false;
+  isAccount : boolean = false;
+  isDashboard: boolean = false;
   @ViewChild('categoryList', { static: false }) categoryList!: ElementRef;
 
   constructor(
@@ -117,11 +119,15 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private categorieService: CategorieService ,
     private sc:SubCategoryService
+
   ) {
     this.location = location;
     this.router.events.subscribe(() => {
       this.isLogin = this.router.url.includes('login')
       console.log(this.isLogin);
+    })
+    this.router.events.subscribe(() => {
+      this.isDashboard = this.router.url.includes('dashboard');
     })
   }
 
@@ -129,12 +135,12 @@ export class NavbarComponent implements OnInit {
     // Charger les catégories
     this.loadCategories();
   }
-  logout(): void {
-    localStorage.removeItem('token');
-    this.clearFavorites();
-    this.router.navigate(['/home']);
-
-  }
+  // logout(): void {
+  //   localStorage.removeItem('token');
+  //   this.clearFavorites();
+  //   this.router.navigate(['/home']);
+  //
+  // }
 
   clearFavorites() {
     // this.favorites = [];
@@ -182,6 +188,18 @@ export class NavbarComponent implements OnInit {
   }
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen; // Toggle dropdown visibility
+  }
+  compteDropdown(): void {
+    this.isAccount = !this.isAccount;
+
+  }
+  navigateToLogin(): void {
+    this.isAccount = false; // Close dropdown after navigation
+    this.router.navigate(['/login']); // Adjust route as needed
+  }
+ navigateToRegister(): void {
+    this.isAccount = false; // Close dropdown after navigation
+    this.router.navigate(['/register']); // Adjust route as needed
   }
 
   navigateToCreateCategory(): void {

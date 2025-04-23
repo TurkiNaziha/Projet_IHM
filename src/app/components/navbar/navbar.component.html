@@ -20,41 +20,66 @@
 
     <!-- Section droite : Compte et Panier -->
     <ul class="navbar-nav user-actions">
+      <li class="nav-item dropdown" *ngIf="!isDashboard">
+        <a class="nav-link" routerLink="/dashboard" style="cursor: pointer;">
+          <i class="fas fa-home"></i> Home
+        </a>
+
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link" (click)="toggleDropdown()" style="cursor: pointer;">
           <i class="fas fa-cog"></i> Settings
         </a>
-        <div class="dropdown-menu" [ngClass]="{ 'show': isDropdownOpen }">
+        <div class="custom-dropdown" [ngClass]="{ 'show': isDropdownOpen }">
           <ul>
             <li>
-              <a class="dropdown-item" (click)="navigateToCreateCategory()">Create category</a>
+              <a class="custom-dropdown-item" (click)="navigateToCreateCategory()">Create category</a>
             </li>
             <li>
-              <a class="dropdown-item" (click)="navigateToCreateSubCategory()">Create sub category</a>
+              <a class="custom-dropdown-item" (click)="navigateToCreateSubCategory()">Create sub category</a>
             </li>
           </ul>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" (click)="compteDropdown()" style="cursor: pointer;">
+          <i class="far fa-user"></i> Account
+        </a>
+        <div class="custom-dropdown" [ngClass]="{ 'show': isAccount }">
+          <ul>
+            <li>
+              <a class="custom-dropdown-item" (click)="navigateToLogin()">Login</a>
+            </li>
+            <li>
+              <a class="custom-dropdown-item" (click)="navigateToRegister()">Create account</a>
+            </li>
+            <li>
+              <a class="custom-dropdown-item" (click)="navigateToLogin()">Sign out</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" routerLink="/account">
           <i class="fas fa-history"></i> History
         </a>
       </li>
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/account">-->
-<!--          <i class="far fa-user"></i> Compte-->
-<!--        </a>-->
-<!--      </li>-->
-      <li class="nav-item">
-        <!-- <div class="up-item" style="padding-left: 50px;"> -->
-        <a  class="nav-link"(click)="logout()"> <i class="fas fa-shopping-bag"></i>Sign Out</a>
-        <!-- </div> -->
-      </li>
-      <li class="nav-item">
-        <!-- <div class="up-item"> -->
-        <a class="nav-link" routerLink="/login" > <i class="fas fa-shopping-bag"></i>Sign In</a> or <a routerLink="/signup" ><i class="fas fa-shopping-bag"></i>Create Account</a>
-        <!-- </div> -->
-      </li>
+      <!--      <li class="nav-item">-->
+      <!--        <a class="nav-link" routerLink="/account">-->
+      <!--          <i class="far fa-user"></i> Compte-->
+      <!--        </a>-->
+      <!--      </li>-->
+      <!--      <li class="nav-item">-->
+      <!--        &lt;!&ndash; <div class="up-item" style="padding-left: 50px;"> &ndash;&gt;-->
+      <!--        <a  class="nav-link" routerLink="/login"> <i class="fas fa-shopping-bag"></i>Sign Out</a>-->
+      <!--        &lt;!&ndash; </div> &ndash;&gt;-->
+      <!--      </li>-->
+      <!--      <li class="nav-item">-->
+      <!--        &lt;!&ndash; <div class="up-item"> &ndash;&gt;-->
+      <!--        <a class="nav-link" routerLink="/login" > <i class="fas fa-shopping-bag"></i>Sign In</a> or <a routerLink="/signup" ><i class="fas fa-shopping-bag"></i>Create Account</a>-->
+      <!--        &lt;!&ndash; </div> &ndash;&gt;-->
+      <!--      </li>-->
       <li class="nav-item">
         <a class="nav-link" routerLink="/cart">
           <i class="fas fa-shopping-bag"></i> Panier

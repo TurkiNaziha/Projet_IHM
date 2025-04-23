@@ -2,7 +2,8 @@
 
 .demo-table {
   width: 100%;
-  margin-top: 20px;
+  //margin-top: 20px;
+  margin: 30px !important;
 }
 
 .mat-header-cell {
@@ -16,4 +17,146 @@
 
 .mat-row:hover {
   background-color: #f0f0f0;
+}
+.custom-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #e5e5e5;
+  border: 2px solid #555;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  padding: 8px 0;
+  //margin: 8px 0 0 0;
+  margin: 0 !important;
+  min-width: 160px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  &.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      .custom-dropdown-item {
+        display: block;
+        padding: 10px 20px;
+        color: #555;
+        text-decoration: none;
+        font-size: 14px;
+        font-family: 'Times New Roman', Times, serif;
+        letter-spacing: 0.5px;
+        transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+
+        &:hover {
+          //background-color: #7A9D54;
+          color: #555;
+          padding-left: 20px;
+          text-decoration: underline;
+        }
+
+        &:active {
+          background-color: #EEEEEE;
+          color: #555;
+        }
+      }
+    }
+  }
+}
+
+.custom-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-left: 30px !important;
+
+
+  //background: linear-gradient(45deg, var(--btn-bg-start), var(--btn-bg-end));
+  background: #B19470;
+  color: white;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+
+  /* Effet de survol */
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+
+  /* Effet de vague au survol */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  /* Taille réduite pour les petits boutons */
+  &.btn-sm {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background : #B19470;
+  }
+  &.btn-sm1 {
+    padding: 6px 15px;
+    font-size: 0.7rem;
+  }
+
+  /* Bouton en outline */
+  &.btn-outline-blue {
+    background: transparent;
+    border-color: #1a73e8;
+    color: #1a73e8;
+    background: none;
+
+    &:hover {
+      background: linear-gradient(45deg, #1a73e8, #4a90e2);
+      border-color: transparent;
+      color: white;
+    }
+  }
+
+  /* Bouton lien (pour les catégories) */
+  &.btn-link {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    color: #1a73e8;
+    text-transform: none;
+    letter-spacing: 0;
+
+    &:hover {
+      background: none;
+      box-shadow: none;
+      text-decoration: underline;
+    }
+  }
 }
