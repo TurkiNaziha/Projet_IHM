@@ -33,6 +33,8 @@ import { Article } from 'src/Models/Article';
   ]
 })
 export class ModalAnnonceComponent implements OnInit {
+
+  
   annonceForm: FormGroup;
   articleForm: FormGroup;
   categories: Categorieng[] = [];
@@ -95,21 +97,20 @@ export class ModalAnnonceComponent implements OnInit {
     });
   }
 
-
   previewUrl: string | ArrayBuffer | null = null;
 
-onImageSelected(event: Event): void {
-  const input = event.target as HTMLInputElement;
-  if (input.files && input.files.length > 0) {
-    const file = input.files[0];
+onImageSelected(event: any): void {
+  const file = event.target.files[0];
+  if (file) {
     const reader = new FileReader();
-    reader.onload = () => {
-      this.previewUrl = reader.result;
-    };
+    reader.onload = e => this.previewUrl = reader.result;
     reader.readAsDataURL(file);
-    // Save the file if needed: this.articleForm.patchValue({ image: file });
   }
 }
+
+
+
+
 
   loadCategories(): void {
     this.isLoading = true;
